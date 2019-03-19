@@ -3,6 +3,7 @@ machine=$(uname -s)
 if [[ $machine == "Linux" ]]; then 
   home=/home/tshmak
   color="--color=auto"
+  source $home/.bashrc
 elif [[ $machine == "Darwin" ]]; then 
   home=/Users/tshmak
   export CLICOLOR=1
@@ -10,7 +11,6 @@ else
   echo "I don't know what home is for this machine" 
 fi
 
-source $home/.bashrc
 source $home/scripts/git-prompt.sh
 if [ "$defaultPATH" == "" ]; then
 	export defaultPATH=$PATH
