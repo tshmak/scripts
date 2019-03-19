@@ -27,4 +27,5 @@ do
   esac
 done
 
-echo "ssh -N -f -L localhost:$portlocal:localhost:$portremote $remote"
+ssh -N -f -L localhost:$portlocal:localhost:$portremote $remote
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome https://localhost:$portlocal

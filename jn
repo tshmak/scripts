@@ -1,3 +1,7 @@
 #!/bin/bash
-/Users/tshmak/anaconda3/bin/jupyter notebook $@
+machine=$(uname -s)
+if [[ $machine == "Linux" ]]; then 
+  nobrowser=--no-browser
+fi
+jupyter notebook $nobrowser $@
 
