@@ -1,0 +1,46 @@
+#!/bin/bash
+# Script for parsing arguments
+
+currentdir=$(pwd)
+parentdir=$(dirname $currentdir)
+
+# Call getopt to parse options
+options=$(getopt -o --long no-recursive,max-size:: -- "$@")
+[ $? -eq 0 ] || {
+    # This is ok...
+    # echo "Incorrect options provided"
+    # exit 1
+    echo "jkl"
+}
+
+eval set -- "$options"
+export recur=TRUE
+sizeoption="--max-size 100m"
+while true; do
+    case "$1" in
+    --no-recursive)
+        export recur=FALSE
+	shift
+	break
+        ;;
+    --max-size)
+        if [ -n "$2" ];
+	then
+	  sizeoption="--max-size $2"
+	  shift
+	else
+	  sizeoption=""
+	fi
+	shift
+	break
+        ;;
+    --)
+        shift
+        break
+        ;;
+    esac
+    options2="$options2 $1"
+echo $options2
+    shift
+done
+export options2="-a --exclude-from /home/tshmak/scripts/rs-exclude.txt $sizeoption $options2"

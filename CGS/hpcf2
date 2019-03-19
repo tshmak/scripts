@@ -1,0 +1,3 @@
+#!/bin/bash
+ssh -t hpcf2.cgs.hku.hk "cd $(pwd); bash --login"
+

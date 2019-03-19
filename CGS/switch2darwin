@@ -1,0 +1,2 @@
+ssh -t darwin "cd $(pwd); bash --login" 
+

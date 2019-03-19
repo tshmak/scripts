@@ -1,0 +1,30 @@
+#!/bin/bash
+
+remote=$1
+shift
+
+POSITIONAL=()
+portlocal="8888"
+portremote="8889"
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    --local)
+    portlocal="$2"
+    shift
+    shift
+    ;;
+    --remote)
+    portremote="$2"
+    shift
+    shift
+    ;;
+    *)  # Unknown option
+    POSITIONAL+=("$1") # save it in array for later
+    shift
+    ;;
+  esac
+done
+
+echo "ssh -N -f -L localhost:$portlocal:localhost:$portremote $remote"

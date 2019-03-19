@@ -1,0 +1,36 @@
+#!/bin/bash
+currentdir=$(pwd)
+file=/home/tshmak/temp/temp.sh
+printf '#!/bin/bash\n'  > $file
+printf '#PBS -l nodes=1:ppn=1\n' >> $file
+printf '#PBS -l mem=50gb\n' >> $file
+printf '#PBS -l walltime=48:00:00\n' >> $file
+printf '#PBS -m abe\n' >> $file
+printf '#PBS -M tshmak\@hku.hk\n' >> $file
+printf '#PBS -q high_ram\n' >> $file
+printf '#PBS -N TimTemp\n' >> $file
+command="$1"
+shift
+while (( "$#" )); do
+	# printf '#PBS ' >> $file
+	printf "$1\n" >> $file
+	shift
+done
+
+printf "cd $currentdir\n" >> $file
+#printf "cd /home/tshmak\n" >> $file
+printf "$command\n" >> $file
+
+echo
+cat $file
+echo
+
+read -p "Do you wish to run the script?" yn
+case $yn in
+[Yy]* ) qsub $file;;
+* ) exit;;
+esac
+
+sleep 5
+qstat
+

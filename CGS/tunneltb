@@ -1,0 +1,28 @@
+#!/bin/bash
+# Script for tunneling tensorboard output from server
+
+POSITIONAL=()
+port="--port 7000"
+portlocal="--portlocal 7000"
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    --port)
+    port="$2"
+    shift
+    shift
+    ;;
+    --portlocal)
+    portlocal="$2"
+    shift
+    shift
+    ;;
+    *)  # Unknown option
+    POSITIONAL+=("$1") # save it in array for later
+    shift
+    ;;
+  esac
+done
+
+ssh -N -f -L localhost:$port:localhost:$portlocal tshmak@hpcf2.cgs.hku.hk

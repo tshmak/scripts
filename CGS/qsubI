@@ -1,0 +1,1 @@
+quicksub -I -q medium -m 50gb -w 12:00:00 -p 10 -y

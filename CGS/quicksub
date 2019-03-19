@@ -1,0 +1,126 @@
+#!/bin/bash
+
+q=small
+nodes=1
+ppn=1
+mem=10gb
+walltime=6:00:00
+Name=TimTemp
+dontask=ask
+help='Quick submission by qsub... by Timothy Mak, Jan 2015
+
+Usage:   quicksub [options]  <commands>
+Options:
+    -q    Queue of job (default, more_ram, or high_ram)    < default: default >
+    -n    Number of nodes                                  < default: 1 >
+    -p    Processes per node                               < default: 1 > 
+    -m    Memory to request                                < default: 8gb >
+    -w    Walltime                                         < default: 4:00:00 >
+    -N    Name                                             < default: TimTemp >
+    -h    Display this help menu
+    -y    Don''t ask for confirmation
+    -I    Interative mode
+
+'
+
+while getopts ":q:n:p:m:w:N:hyI" opt; do
+	case $opt in
+	q)
+		q=$OPTARG
+		;;
+	n)
+		nodes=$OPTARG
+		;;
+	p)
+		ppn=$OPTARG
+		;;
+	m)
+		mem=$OPTARG
+		;;
+	w)
+		walltime=$OPTARG
+		;;
+	N)
+		Name=$OPTARG
+		;;
+	h)
+		printf '%s' "$help"
+		exit 0
+		;;
+	y)
+		dontask=dontask
+		;;
+	I)
+		interactive=interactive
+		;;
+	\?)
+		echo "Invalid option: -$OPTARG" >&2
+		exit 1
+		;;	
+	:)
+		echo "Option -$OPTARG requires an argument." >&2
+		exit 2
+		;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+currentdir=$(pwd)
+if [ "$interactive" == "interactive" ]; then 
+    cmd="-I -q $q -l nodes=${nodes}:ppn=${ppn},walltime=${walltime},mem=${mem} -v _chdir=$currentdir"
+    
+    if [ "$dontask" != 'dontask' ]; then
+	echo "qsub $cmd"
+        read -p "Do you wish to start with these settings?" yn
+	case $yn in
+	[Yy]* ) qsub $cmd;;
+	* ) exit;;
+	esac
+
+    else 
+	qsub $cmd
+    fi
+    exit
+fi
+
+time=$(date +"%T")
+file=/home/tshmak/temp/temp.sh
+
+cdir=$(pwd | sed 's/^.*\/\(.*\)$/\1/')
+
+printf "#!/bin/bash\n"  > $file
+printf "#PBS -q ""$q""\n" >> $file
+printf "#PBS -l nodes=""$nodes":ppn="$ppn""\n" >> $file
+printf "#PBS -l mem=""$mem""\n" >> $file
+printf "#PBS -l walltime=""$walltime""\n" >> $file
+printf "#PBS -m abe\n" >> $file
+printf "#PBS -M tshmak\@hku.hk\n" >> $file
+printf "#PBS -N "__${cdir:0:8}.$time"\n" >> $file
+command="$1"
+shift
+while (( "$#" )); do
+	# printf '#PBS ' >> $file
+	printf "$1\n" >> $file
+	shift
+done
+
+printf "cd $currentdir\n" >> $file
+#printf "cd /home/tshmak\n" >> $file
+printf "$command\n" >> $file
+
+echo
+cat $file
+echo
+
+if [ "$dontask" != 'dontask' ]; then
+	read -p "Do you wish to run the script?" yn
+	case $yn in
+	[Yy]* ) qsub $file;;
+	* ) exit;;
+	esac
+
+else 
+	qsub $file
+fi
+

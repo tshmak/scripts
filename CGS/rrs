@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" == "local" ]; then
+  shift
+file2run=rslocal.sh
+else
+file2run=rs.sh
+fi
+
+source /home/tshmak/scripts/rs2.sh
+if [ "$HOSTNAME" == "GRC170" ]; then
+  direction="$(pwd)/ tshmak@hpcf2.cgs.hku.hk:$currentdir/"
+else 
+  direction="tshmak@timmak.hopto.org:$currentdir/ ./"
+fi
+bash /home/tshmak/scripts/$file2run $options $direction

@@ -1,0 +1,28 @@
+#!/bin/bash
+# Script for calling tensorboard
+
+POSITIONAL=()
+port="--port 7000"
+logdir="--logdir ."
+while [[ $# -gt 0 ]]
+do
+  key="$1"
+  case $key in
+    --port)
+    port="$1 $2"
+    shift
+    shift
+    ;;
+    --logdir)
+    logdir="$1 $2"
+    shift
+    shift
+    ;;
+    *)  # Unknown option
+    POSITIONAL+=("$1") # save it in array for later
+    shift
+    ;;
+  esac
+done
+
+tensorboard $port $logdir ${POSITIONAL[@]}
