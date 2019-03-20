@@ -1,0 +1,1 @@
+This is for disabling autosave in jupyter notebook. It should be saved in $HOME/.ipython/profile_default/static/custom as per advice in https://stackoverflow.com/questions/25631344/turn-off-autosave-in-ipython-notebook 
