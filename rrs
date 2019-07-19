@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" == "local" ]; then
+  shift
+file2run=rslocal.sh
+else
+file2run=rs.sh
+fi
+
+source $HOME/scripts/rs2.sh
+if [ "$HOSTNAME" == "Timothys-MacBook-Pro.local" ]; then
+  direction="$(pwd)/ gpu1:$linuxcurrentdir/"
+else 
+  direction="tshmak@timmak.hopto.org:$maccurrentdir/ ./"
+fi
+bash $HOME/scripts/$file2run $options $direction
