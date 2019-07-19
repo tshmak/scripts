@@ -11,6 +11,6 @@ source $HOME/scripts/rs2.sh
 if [ "$HOSTNAME" == "Timothys-MacBook-Pro.local" ]; then
   direction="gpu1:$linuxcurrentdir/ ./"
 else 
-  direction="$(pwd)/ tshmak@timmak.hopto.org:$maccurrentdir/"
+  direction="$(pwd)/ mymac:$maccurrentdir/"
 fi
 bash $HOME/scripts/$file2run $options $direction
