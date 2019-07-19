@@ -1,0 +1,16 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+Host gpu1
+  Hostname 192.168.1.236 
+  User tshmak
+Host gpu2
+  Hostname 192.168.1.237 
+  User tshmak
+Host train1
+  Hostname 192.168.1.242
+  User tshmak
+Host mymac
+  Hostname 192.168.4.45
+  User tshmak
