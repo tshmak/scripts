@@ -11,14 +11,18 @@ else
   echo "I don't know what home is for this machine" 
 fi
 
-source $home/scripts/git-prompt.sh
-if [ "$defaultPATH" == "" ]; then
-	export defaultPATH=$PATH
-#	echo $defaultPATH
+# echo $default_PATH
+
+if [ "$default_PATH" == "" ]; then
+	export default_PATH=$PATH
+#	echo $default_PATH
 fi
-export PATH="$defaultPATH:$home/scripts/"
+export PATH="$default_PATH:$home/scripts/"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 
+# echo $PATH 
+
+source $home/scripts/git-prompt.sh
 alias ll='ls $color -Flha'
 alias diff=colordiff
 
@@ -29,4 +33,6 @@ fi
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+echo "Hello!"
 
