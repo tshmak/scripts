@@ -18,7 +18,7 @@ fi
 	read -p "Update?" yn
 	case $yn in
 	[Yy]* )
-	    rsync -a --delete -f '- */' $@
+	    rsync -a $delete -f '- */' $@
       ;;
 	* )
   exit
