@@ -36,3 +36,6 @@ export LC_ALL=en_US.UTF-8
 
 echo "Hello!"
 
+export ted=$HOME/WORK/Projects/WFST/kaldi/egs/tedlium/s5_r3
+export kaldi=$HOME/WORK/Projects/WFST/kaldi
+export WFST=$HOME/WORK/Projects/WFST
