@@ -3,7 +3,7 @@ machine=$(uname -s)
 if [[ $machine == "Linux" ]]; then 
   home=/home/tshmak
   color="--color=auto"
-  conda_path=$home/miniconda3
+  conda_path=$home/storage/software/miniconda3
 elif [[ $machine == "Darwin" ]]; then 
   home=/Users/tshmak
   conda_path=$home/anaconda3
@@ -12,7 +12,7 @@ else
   echo "I don't know what home is for this machine" 
 fi
 #### Activate conda ####
-. $conda_path/etc/profile.d.conda.sh
+. $conda_path/etc/profile.d/conda.sh  
 CONDA_CHANGEPS1=false conda activate base
 
 # echo $default_PATH
@@ -44,3 +44,19 @@ export ted=$HOME/WORK/Projects/WFST/kaldi/egs/tedlium/s5_r3
 export kaldi=$HOME/WORK/Projects/WFST/kaldi
 export WFST=$HOME/WORK/Projects/WFST
 export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/tshmak/storage/software/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/tshmak/storage/software/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/tshmak/storage/software/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/tshmak/storage/software/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+
