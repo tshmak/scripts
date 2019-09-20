@@ -8,4 +8,7 @@ Actually, I think it's best to just follow the instruction here: https://cran.r-
 6. I'll need iTerm2 instead of Terminal. 
 7. In iTerm2, go to Profiles -- Keys to try and adopt the "Natural text edit" setup. 
 8. Try and enable the home and end keys in iTerm2. (Search online for how to do that.) 
-9. Disable autosave in jupyter notebook. 
+9. Disable autosave in jupyter notebook. (Actually not sure it's a good idea now.)
+10. Install homebrew, and where possible use it to install software (if dmg files not available)
+11. Things like sox are best installed using homebrew. (Possibly Octave) 
+12. Consider installing software with conda also! (e.g. R, Octave)

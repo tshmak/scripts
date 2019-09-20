@@ -3,13 +3,17 @@ machine=$(uname -s)
 if [[ $machine == "Linux" ]]; then 
   home=/home/tshmak
   color="--color=auto"
-  source $home/.bashrc
+  conda_path=$home/miniconda3
 elif [[ $machine == "Darwin" ]]; then 
   home=/Users/tshmak
+  conda_path=$home/anaconda3
   export CLICOLOR=1
 else 
   echo "I don't know what home is for this machine" 
 fi
+#### Activate conda ####
+. $conda_path/etc/profile.d.conda.sh
+CONDA_CHANGEPS1=false conda activate base
 
 # echo $default_PATH
 

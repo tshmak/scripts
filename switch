@@ -1,0 +1,2 @@
+ssh -t $1 "cd $(pwd | sed "s/^\/Users\//\/home\//"); bash --login" 
+
