@@ -3,7 +3,7 @@ machine=$(uname -s)
 if [[ $machine == "Linux" ]]; then 
   home=/home/tshmak
   color="--color=auto"
-  conda_path=$home/storage/software/miniconda3
+  conda_path=$home/miniconda3
 elif [[ $machine == "Darwin" ]]; then 
   home=/Users/tshmak
   conda_path=$home/anaconda3
