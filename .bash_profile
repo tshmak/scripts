@@ -1,2 +1,3 @@
 #!/bin/bash
-. .bashrc
+. $HOME/.bashrc
+echo "Hello!"
