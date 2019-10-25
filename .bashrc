@@ -5,6 +5,7 @@ if [[ $machine == "Linux" ]]; then
   conda_path=$HOME/miniconda3
 
   # Set up simlinks to shared drive 
+  cd $HOME
   [ ! -d nas2 ] && ln -s /mnt/nas2 nas2
   [ ! -d storage ] && ln -s nas2/tshmak storage
   [ ! -d scripts ] && ln -s storage/scripts scripts
@@ -14,12 +15,15 @@ if [[ $machine == "Linux" ]]; then
   [ ! -f .gitconfig ] && ln -s scripts/.gitconfig .gitconfig
   [ ! -d DATA ] && ln -s storage/DATA DATA
   [ ! -d local ] && ln -s storage/local local
+  cd - 
 elif [[ $machine == "Darwin" ]]; then 
   conda_path=$HOME/anaconda3
   export CLICOLOR=1
 
   # set up simlinks 
+  cd $HOME
   [ ! -d local ] && ln -s /usr/local local
+  cd - 
 
 else 
   echo "I don't know what home is for this machine" 
