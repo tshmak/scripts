@@ -1,0 +1,15 @@
+#!/bin/bash
+# # Usage: simlink_all_files /path/to/dir
+# if [ ! -d "$1" ]; then
+#     echo "Directory $1 DOES NOT exists."
+#     exit 1
+# fi
+# for f in $(ls $1); do ln -s $1/$f $f ; done
+
+# Usage simlink_all_files file1 [file2 ...]
+while [[ $# -gt 0 ]] 
+do 
+    ln -s $1 $(basename $1)
+    shift
+done
+
