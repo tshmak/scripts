@@ -1,21 +1,20 @@
 #!/bin/bash
 
-currentdir=$(pwd)/
-maccurrentdir=$(echo $currentdir | sed "s/^\/home/\/Users/") 
-linuxcurrentdir=$(echo $currentdir | sed "s/^\/Users/\/home/")
+if "$1" == ""; then 
+    dir=$(pwd)/
+else
+    dir=$1/
+fi
+macdir=$(echo $dir | sed "s/^\/home/\/Users/") 
+linuxdir=$(echo $dir | sed "s/^\/Users/\/home/")
 
 if [ "$HOSTNAME" == "Timothys-MacBook-Pro.local" ]; then 
   remote=gpu1
   color="--color=auto"
-  dir=$linuxcurrentdir
+  DIR=$linuxdir
 else 
   remote=mymac
-  dir=$maccurrentdir
+  DIR=$macdir
 fi
 
-if "$1" == ""; then 
-    DIR=$dir
-else
-    DIR=$1
-fi
 ssh $remote "ls $color -Flha $DIR"
