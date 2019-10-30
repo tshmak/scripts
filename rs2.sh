@@ -1,6 +1,13 @@
 #!/bin/bash
 # Script for parsing arguments
 
+if [ "$1" == "local" ]; then
+  shift
+  file2run=rslocal.sh
+else
+  file2run=rs.sh
+fi
+
 currentdir=$(pwd)
 maccurrentdir=$(echo $currentdir | sed "s/^\/home/\/Users/") 
 linuxcurrentdir=$(echo $currentdir | sed "s/^\/Users/\/home/")
