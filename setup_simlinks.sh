@@ -11,4 +11,5 @@ ln -sf storage/local local
 ln -sf scripts/.vimrc .vimrc
 ln -sf scripts/.bashrc .bashrc
 ln -sf scripts/.bash_profile .bash_profile
+ln -sf scripts/sshconfig .ssh/config
 cd - 

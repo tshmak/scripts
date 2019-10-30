@@ -13,4 +13,9 @@ else
   dir=$maccurrentdir
 fi
 
-ssh $remote "ls $color -Flha $dir"
+if "$1" == ""; then 
+    DIR=$dir
+else
+    DIR=$1
+fi
+ssh $remote "ls $color -Flha $DIR"
