@@ -9,4 +9,4 @@ else
   remote=mymac
 fi
 
-ssh $remote "cd $currentdir; ls $color -Flha $1"
+ssh -t $remote "cd $currentdir; ls $color -Flha $1"
