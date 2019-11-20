@@ -7,11 +7,13 @@ Host gpu1
 Host gpu2
   Hostname 192.168.1.237 
   User tshmak
+  ForwardAgent yes
   ForwardX11 yes
   ForwardX11Trusted yes
+  XAuthLocation /opt/X11/bin/xauth
 Host train1
   Hostname 192.168.1.242
   User tshmak
 Host mymac
-  Hostname 192.168.4.45
+  Hostname 192.168.4.14
   User tshmak
