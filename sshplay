@@ -1,0 +1,7 @@
+#!/bin/bash
+wavfile=$1
+shift
+args=$@
+scp $wavfile mymac:/tmp/tmp.wav
+ssh mymac "play $args /tmp/tmp.wav"
+
