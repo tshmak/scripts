@@ -12,6 +12,18 @@ Actually, I think it's best to just follow the instruction here: https://cran.r-
 10. Install homebrew, and where possible use it to install software (if dmg files not available)
 11. Things like sox are best installed using homebrew. (Possibly Octave) 
 12. Consider installing software with conda also! (e.g. R, Octave)
-13. Install Latex (MacTex). This takes time. 
+13. Install MacTex (MikTex is for Windows. Tex Live is for Linux)
 14. Install Rstudio, and disable auto saving workspace and history. 
+
+# Linux install 
+Actually, Linux installs are a pain also. Some points to keep in mind: 
+1. To install python: 
+1.1 Install conda
+1.2 Install spyder within conda (i.e. don't install separately)
+1.3 Use the `~/scripts/start_spyder.sh` to launch spyder. 
+1.4 Set up a launcher to spyder: likely through /usr/share/applications/spyder.desktop
+2. Install Tex Live (MikTex is only for Windows)
+3. Install Mendeley
+4. Install Microsoft R and Rstudio
+
 
