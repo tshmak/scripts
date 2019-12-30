@@ -12,3 +12,6 @@ Actually, I think it's best to just follow the instruction here: https://cran.r-
 10. Install homebrew, and where possible use it to install software (if dmg files not available)
 11. Things like sox are best installed using homebrew. (Possibly Octave) 
 12. Consider installing software with conda also! (e.g. R, Octave)
+13. Install Latex (MacTex). This takes time. 
+14. Install Rstudio, and disable auto saving workspace and history. 
+
