@@ -7,9 +7,10 @@
 # for f in $(ls $1); do ln -s $1/$f $f ; done
 
 # Usage simlink_all_files file1 [file2 ...]
-while [[ $# -gt 0 ]] 
+targets=$(ls $@)
+for i in $targets
 do 
-    ln -s $1 $(basename $1)
+    ln -s $i 
     shift
 done
 
