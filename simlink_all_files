@@ -11,6 +11,5 @@ targets=$(ls -d $@)
 for i in $targets
 do 
     ln -s $i 
-    shift
 done
 

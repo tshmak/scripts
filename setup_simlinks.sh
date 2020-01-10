@@ -1,15 +1,13 @@
 cd $HOME
-ln -sf /mnt/nas2 nas2
-ln -sf nas2/tshmak storage
-ln -sf storage/scripts scripts
-ln -sf storage/sandbox sandbox
-ln -sf storage/WORK WORK
-ln -sf storage/Downloads Downloads
-ln -sf scripts/.gitconfig .gitconfig
-ln -sf storage/DATA DATA
-ln -sf storage/local local
-ln -sf scripts/.vimrc .vimrc
-ln -sf scripts/.bashrc .bashrc
-ln -sf scripts/.bash_profile .bash_profile
-ln -sf $HOME/scripts/sshconfig .ssh/config
+for i in /mnt/nas2 nas2/tshmak storage/scripts storage/sandbox storage/WORK storage/Downloads scripts/.gitconfig storage/DATA storage/local scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile
+do 
+    b=$(basename $i)
+    [ -L $b ] && rm $(basename $i)
+    ln -s $i
+done
+cd - 
+
+cd $HOME/.ssh
+[ -L config ] && rm config
+ln -s $HOME/scripts/sshconfig config
 cd - 
