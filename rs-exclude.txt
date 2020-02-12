@@ -1,7 +1,5 @@
 .Rproj.user/
 .git/
-__*
-*.doc*
 *.o
 *.so
 *.Rproj
