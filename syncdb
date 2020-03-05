@@ -41,11 +41,15 @@ for file in files:
         mtime = os.path.getmtime(file)
         mtimedb = os.path.getmtime(basename)
         if mtime > mtimedb: 
-            shutil.copy2(file, basename)
-            print('%s in %s overwritten' % (basename, 'Dropbox'))
+            y = input('Overwrite %s in %s?' % (basename, 'Dropbox'))
+            if len(y) > 0: 
+                if y[0] == 'y' or 'Y': 
+                    shutil.copy2(file, basename)
         elif mtime < mtimedb: 
-            shutil.copy2(basename, file)
-            print('%s in %s overwritten' % (basename, dirname))
+            y = input('Overwrite %s in %s?' % (basename, dirname))
+            if len(y) > 0: 
+                if y[0] == 'y' or 'Y': 
+                    shutil.copy2(basename, file)
         else: 
             print('%s is in sync' % (file))
 
