@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+import os
+import shutil
+
+home = '/home/tshmak/'
+dropbox_folder = home + 'Dropbox/FanoShare/'
+os.chdir(dropbox_folder)
+synclist = 'synclist.txt'
+
+with open(synclist, 'r') as f: 
+    text = f.read()
+    
+files = text.split('\n')
+for file in files: 
+    # file = files[0]
+    
+    if len(file) == 0: 
+        continue
+    
+    if file[0] == '#': 
+        continue
+    
+    file = home + file
+    basename = os.path.basename(file)
+    dirname = os.path.dirname(file)
+    exists = os.path.exists(file)
+    existsdb = os.path.exists(basename)
+    
+    if (not exists) & (not existsdb): 
+        print('%s does not exist in Dropbox or destination.' % (file))
+    elif (not exists) & (existsdb): 
+        if not os.path.isdir(dirname): 
+            print('The directory %s does not exist' % dirname)
+        else: 
+            shutil.copy2(basename, file)
+            print('%s copied from %s to %s' % (basename, 'Dropbox', dirname))
+    elif (exists) & (not existsdb):
+        shutil.copy2(file, '.')
+        print('%s copied from %s to %s' % (basename, dirname, 'Dropbox'))
+    elif (exists) & (existsdb): 
+        mtime = os.path.getmtime(file)
+        mtimedb = os.path.getmtime(basename)
+        if mtime > mtimedb: 
+            shutil.copy2(file, basename)
+            print('%s in %s overwritten' % (basename, 'Dropbox'))
+        elif mtime < mtimedb: 
+            shutil.copy2(basename, file)
+            print('%s in %s overwritten' % (basename, dirname))
+        else: 
+            print('%s is in sync' % (file))
+
+        
+            
+                
+            
+
+
