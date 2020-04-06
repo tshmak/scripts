@@ -2,10 +2,10 @@
 import os
 import shutil
 
-home = '/home/tshmak/'
+home = '/Users/tshmak/'
 dropbox_folder = home + 'Dropbox/FanoShare/'
 os.chdir(dropbox_folder)
-synclist = 'synclist.txt'
+synclist = '.synclist.txt'
 
 with open(synclist, 'r') as f: 
     text = f.read()
