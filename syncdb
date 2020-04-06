@@ -20,8 +20,17 @@ for file in files:
     if file[0] == '#': 
         continue
     
+    file2 = file.split()
+    file = file2[0]
+    if len(file2) > 1: 
+        if len(file2) > 2: 
+            print('%s ignored because the line has more than two columns.' % file)
+            continue
+        basename = file2[1]
+    else: 
+        basename = os.path.basename(file)    
+    
     file = home + file
-    basename = os.path.basename(file)
     dirname = os.path.dirname(file)
     exists = os.path.exists(file)
     existsdb = os.path.exists(basename)
