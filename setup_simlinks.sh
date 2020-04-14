@@ -1,5 +1,15 @@
 cd $HOME
-for i in /mnt/nas2 nas2/tshmak storage/scripts storage/sandbox storage/WORK storage/Downloads scripts/.gitconfig storage/DATA storage/local scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile
+[ -L nas2 ] && rm nas2
+ln -s /mnt/nas2
+cd - 
+
+cd $HOME
+[ -L storage ] && rm storage
+ln -s nas2/tshmak storage
+cd - 
+
+cd $HOME
+for i in storage/scripts storage/sandbox storage/WORK storage/Downloads scripts/.gitconfig storage/DATA storage/local scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile
 do 
     b=$(basename $i)
     [ -L $b ] && rm $(basename $i)
