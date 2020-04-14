@@ -3,7 +3,7 @@ import os
 import shutil
 
 # home = '/Users/tshmak/'
-home = os.path.expanduser('~')
+home = os.path.expanduser('~/')
 dropbox_folder = home + 'Dropbox/Apps/FanoTimMak/'
 os.chdir(dropbox_folder)
 synclist = '.synclist.txt'
