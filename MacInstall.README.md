@@ -22,8 +22,14 @@ Actually, Linux installs are a pain also. Some points to keep in mind:
 1.2 Install spyder within conda (i.e. don't install separately)
 1.3 Use the `~/scripts/start_spyder.sh` to launch spyder. 
 1.4 Set up a launcher to spyder: likely through /usr/share/applications/spyder.desktop
-2. Install Tex Live (MikTex is only for Windows)
+2. Install Tex Live (MikTex is only for Windows) (Do full install instead of on-the-fly)
 3. Install Mendeley
 4. Install Microsoft R and Rstudio
+5. Install a scanner driver (gscan2pdf)
+6. Install Dropbox and rclone for Dropbox and Googledrive sync
+7. Install VLC for playing media
+8. Install Inkscape for drawing
+9. Install LibreOffice
+10. Install OpenFORTI for VPN
 
 
