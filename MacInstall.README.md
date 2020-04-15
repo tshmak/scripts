@@ -25,11 +25,15 @@ Actually, Linux installs are a pain also. Some points to keep in mind:
 2. Install Tex Live (MikTex is only for Windows) (Do full install instead of on-the-fly)
 3. Install Mendeley
 4. Install Microsoft R and Rstudio
-5. Install a scanner driver (gscan2pdf)
-6. Install Dropbox and rclone for Dropbox and Googledrive sync
-7. Install VLC for playing media
-8. Install Inkscape for drawing
+5. Remember to install the packages such as roxygen2, devtools, etc. in R. These can actually be problematic, especially with the compiler settings. 
+5.1 Type "R CMD config" to see a list of flags you can set for the c compilers. 
+5.2 For example, `xml2` can fail if compiling using the default CXX. We may need to set CXX to "g++ -std=c++11" by creating a `~/.R/Makevars` file
+6. Install a scanner driver (gscan2pdf)
+7. Install Dropbox and rclone for Dropbox and Googledrive sync
+8. Install VLC for playing media
 9. Install LibreOffice
 10. Install OpenFORTI for VPN
+11. Install Inkscape for drawing
+
 
 
