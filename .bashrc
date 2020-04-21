@@ -1,10 +1,17 @@
 #!/bin/bash
 machine=$(uname -s)
-if [[ $machine == "Linux" ]]; then 
+if [[ $(hostname) ~= ^Fano ]]; then 
+  # Fano server 
   color="--color=auto"
   conda_path=$HOME/miniconda3
 
+elif [[ $(hostname) == "timhome" ]]; then 
+  # Home Linux
+  conda_path=$HOME/miniconda3
+  export CLICOLOR=1
+
 elif [[ $(hostname) == "Timothy-Mak.local" ]]; then 
+  # Fano Macbookpro
   conda_path=$HOME/anaconda3
   export CLICOLOR=1
 
