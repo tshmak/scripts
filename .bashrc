@@ -4,7 +4,7 @@ if [[ $machine == "Linux" ]]; then
   color="--color=auto"
   conda_path=$HOME/miniconda3
 
-elif [[ $machine == "Darwin" ]]; then 
+elif [[ $(hostname) == "Timothy-Mak.local" ]]; then 
   conda_path=$HOME/anaconda3
   export CLICOLOR=1
 
