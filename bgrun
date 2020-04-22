@@ -1,5 +1,8 @@
 #!/bin/bash
 
-cmd="nohup bash -c '$*' &>/dev/null" 
+cmd="nohup bash -c '$*' &>/dev/null &" 
 echo "$cmd"
 eval $cmd
+PID=$!
+echo "PID: $PID"
+
