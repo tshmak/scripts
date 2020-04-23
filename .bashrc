@@ -1,6 +1,6 @@
 #!/bin/bash
 machine=$(uname -s)
-if [[ $(hostname) ~= ^Fano ]]; then 
+if [[ $(hostname) =~ ^Fano ]]; then 
   # Fano server 
   color="--color=auto"
   conda_path=$HOME/miniconda3
