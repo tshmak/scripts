@@ -1,13 +1,14 @@
 #!/bin/bash
 # Use rclone to sync dropbox with /home/tshmak/Dropbox/Apps/FanoTimMak
 
-rclone copy dropbox: /home/tshmak/Dropbox/Apps/FanoTimMak/ --create-empty-src-dirs --dry-run
+dbfolder=$HOME/Dropbox/Apps/FanoTimMak
+rclone copy dropbox: $dbfolder/ --create-empty-src-dirs --exclude-from $dbfolder/.rclone.exclude.txt --dry-run
 echo "" 
 
 read -p "Ok?" yn
 case $yn in
 [Yy]* )
-    rclone copy dropbox: /home/tshmak/Dropbox/Apps/FanoTimMak/ --create-empty-src-dirs
+    rclone copy dropbox: $dbfolder/ --create-empty-src-dirs --exclude-from $dbfolder/.rclone.exclude.txt
   ;;
 * )
   exit
