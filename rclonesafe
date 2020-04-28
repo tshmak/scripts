@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# A safe version of rclone
+
+rclone $@ --dry-run
+echo "" 
+
+read -p "Ok?" yn
+case $yn in
+[Yy]* )
+    rclone $@  ;;
+* )
+  exit
+  ;;
+esac
+
