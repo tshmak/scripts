@@ -34,6 +34,8 @@ Actually, Linux installs are a pain also. Some points to keep in mind:
 9. Install LibreOffice
 10. Install OpenFORTI for VPN
 11. Install Inkscape for drawing
+12. Install Synaptic for managing apps
+13. Install colordiff (via Synaptic)
 
 
 

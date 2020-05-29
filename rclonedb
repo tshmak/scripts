@@ -1,15 +1,26 @@
 #!/bin/bash
 # Use rclone to sync dropbox with /home/tshmak/Dropbox/Apps/FanoTimMak
 
-rclone sync dropbox: /home/tshmak/Dropbox/Apps/FanoTimMak/ --create-empty-src-dirs --dry-run
-echo "" 
+dbfolder=$HOME/Dropbox/Apps/FanoTimMak
+if [[ ! $(pwd) =~ Dropbox/Apps/FanoTimMak ]]; then
+  echo "You must be in a subdirectory within $dbfolder"
+  exit 1
+fi
+subfolder=$(pwd | sed -r 's/^.*FanoTimMak[\/]?//')
+#echo $subfolder
 
-read -p "Ok?" yn
-case $yn in
-[Yy]* )
-    rclone sync dropbox: /home/tshmak/Dropbox/Apps/FanoTimMak/ --create-empty-src-dirs
-  ;;
-* )
-  exit
-  ;;
-esac
+if [[ "$1" == "up" ]]; then 
+  shift
+  cmd="rclonesafe sync . dropbox:$subfolder --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@" 
+  echo $cmd
+  rclonesafe sync . dropbox:$subfolder --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@ 
+elif [[ "$1" == "copy" ]]; then
+  cmd="rclonesafe copy $2 dropbox:$subfolder" 
+  echo $cmd
+  rclonesafe copy $2 dropbox:$subfolder
+else 
+  cmd="rclonesafe sync dropbox:$subfolder . --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@" 
+  echo $cmd
+  rclonesafe sync dropbox:$subfolder . --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@ 
+fi
+

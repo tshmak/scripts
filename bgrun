@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[[ ! -d $HOME/bgrun.logs ]] && mkdir $HOME/bgrun.logs
+[[ ! -d $HOME/bgrun.logs/logfiles ]] && mkdir $HOME/bgrun.logs/logfiles
+
+tempfile=$(mktemp --tmpdir=$HOME/bgrun.logs/logfiles)
+cmd="nohup bash -c '$*' &>$tempfile &" 
+echo "$cmd"
+eval $cmd
+PID=$!
+echo "PID: $PID; Log: $tempfile"
+echo "$PID $tempfile $(date)" >> $HOME/bgrun.logs/bgrun.log
+
