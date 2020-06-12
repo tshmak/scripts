@@ -35,6 +35,7 @@ export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 
 source $HOME/scripts/git-prompt.sh
 alias ll='ls $color -Flha'
+alias ll0='ls $color -Flh'
 alias diff=colordiff
 
 if [ "$_chdir" != "" ]; then 
