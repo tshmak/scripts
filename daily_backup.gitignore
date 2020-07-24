@@ -1,0 +1,14 @@
+*
+!*/
+!*.tex
+!*.bib
+!*.py
+!*.R
+!*.sh
+!*.md
+!*README*
+!.gitignore
+conda_*/
+myRpackages/
+myPythonModules/
+Rpackages2/
