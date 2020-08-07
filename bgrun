@@ -3,11 +3,13 @@
 [[ ! -d $HOME/bgrun.logs ]] && mkdir $HOME/bgrun.logs
 [[ ! -d $HOME/bgrun.logs/logfiles ]] && mkdir $HOME/bgrun.logs/logfiles
 
+dir=$(basename $PWD)
+cmd1=$(echo $1 | awk '{print $1}')
 tempfile=$(mktemp --tmpdir=$HOME/bgrun.logs/logfiles)
 cmd="nohup bash -c '$*' &>$tempfile &" 
 echo "$cmd"
 eval $cmd
 PID=$!
 echo "PID: $PID; Log: $tempfile"
-echo "$PID $tempfile $(date)" >> $HOME/bgrun.logs/bgrun.log
+echo "$PID $tempfile $dir $cmd1 $(date)" >> $HOME/bgrun.logs/bgrun.log
 
