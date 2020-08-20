@@ -3,6 +3,10 @@ syntax on
 noremap gc :s/^\(\s*\)/\1#/<CR> " commenting 
 noremap cg :s/^\(\s*\)#/\1/<CR> " uncommenting
 
+" Window sizing shortcuts 
+nnoremap <C-Up> <C-w>+
+nnoremap <C-Down> <C-w>-
+
 " From https://vi.stackexchange.com/a/26746/30874
 " vnoremap <C-C> :w !xclip -i -r -sel c<CR><CR>
 " vnoremap <C-C> "zy:call writefile(getreg('z', 1, 1), "/home/tshmak/.vim_clipboard")<CR>:call system("xclip -r -sel c /home/tshmak/.vim_clipboard")<CR>
@@ -20,11 +24,18 @@ vnoremap P "0P
 vnoremap y "0y
 vnoremap d "0d
 
+" From https://superuser.com/questions/310417/how-to-keep-in-visual-mode-after-identing-by-shift-in-vim
+vnoremap < <gv
+vnoremap > >gv
+
 " From https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
 filetype plugin indent on
 set tabstop=4
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
+set foldmethod=indent
+set nofoldenable
+
 
 " From https://github.com/ConradIrwin/vim-bracketed-paste/blob/master/plugin/bracketed-paste.vim
 " For automatically starting paste mode when pasting
@@ -49,3 +60,5 @@ imap <expr> <f28> XTermPasteBegin("")
 vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
+
+
