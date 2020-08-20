@@ -89,6 +89,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
+alias ll0='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -151,4 +152,9 @@ alias diff=colordiff
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 
