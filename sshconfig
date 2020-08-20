@@ -4,6 +4,10 @@ Host *
 Host gpu1
   Hostname 192.168.1.236 
   User tshmak
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /opt/X11/bin/xauth
 Host gpu2
   Hostname 192.168.1.237 
   User tshmak
@@ -11,7 +15,7 @@ Host gpu2
   ForwardX11 yes
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
-Host train1
+Host gpu4
   Hostname 192.168.1.242
   User tshmak
   ForwardAgent yes
