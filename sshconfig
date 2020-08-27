@@ -19,5 +19,5 @@ Host train1
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
 Host mymac
-  Hostname 192.168.4.56
+  Hostname 192.168.4.1
   User tshmak
