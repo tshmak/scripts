@@ -28,7 +28,7 @@ if [ "$default_PATH" == "" ]; then
 	export default_PATH=$PATH
 #	echo $default_PATH
 fi
-export PATH="$default_PATH:$HOME/scripts/:$HOME/local/bin"
+export PATH="$default_PATH:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 
 # echo $PATH 
@@ -52,6 +52,13 @@ export ted=$HOME/WORK/Projects/WFST/kaldi/egs/tedlium/s5_r3
 export kaldi=$HOME/WORK/Projects/WFST/kaldi
 export WFST=$HOME/WORK/Projects/WFST
 export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
+export BUP_DIR=/home/tshmak/storage/.bup
+
+
+# Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!

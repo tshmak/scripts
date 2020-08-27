@@ -1,0 +1,22 @@
+*
+!*/
+!*.tex
+!*.bib
+!*.py
+!*.R
+!*.sh
+!*.md
+!*.cpp
+!*.hpp
+!*.c++
+!*.h++
+!*.c
+!*.h
+!*.m # Matlab
+!*README*
+!.gitignore
+!environment.yml
+conda_*/
+myRpackages/
+myPythonModules/
+Rpackages2/

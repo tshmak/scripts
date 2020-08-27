@@ -31,5 +31,11 @@ done
 echo "ssh -N -f -L localhost:$portlocal:localhost:$portremote $remote"
 ssh -N -f -L localhost:$portlocal:localhost:$portremote $remote
 # sleep 0.1
-echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://localhost:$portlocal"
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://localhost:$portlocal
+if [ "$(hostname)" == "timhome" ]
+then 
+  echo "google-chrome http://localhost:$portlocal"
+  google-chrome http://localhost:$portlocal
+else
+  echo "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://localhost:$portlocal"
+  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://localhost:$portlocal
+fi
