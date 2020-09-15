@@ -1,0 +1,3 @@
+line=$(tail -n $1 ~/bgrun.logs/bgrun.log | head -1)
+file=$(echo $line | awk '{print $2}')
+tail $2 $file

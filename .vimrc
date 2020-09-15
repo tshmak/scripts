@@ -15,7 +15,7 @@ func! Myfunc(lofs)
     call writefile(a:lofs, l:clipboard)
     call system("xclip -r -sel c " . l:clipboard)
 endfunc
-vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>
+vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>`]
 
 " From https://superuser.com/q/321547/1154376
 " To prevent paste from yanking text
@@ -23,6 +23,14 @@ vnoremap p "0p
 vnoremap P "0P
 vnoremap y "0y
 vnoremap d "0d
+
+" Inserts quotes (Reference: https://superuser.com/a/986769/1154376)
+vnoremap " c""<ESC>Pgv
+vnoremap ' c''<ESC>Pgv
+
+" From https://stackoverflow.com/questions/4312664/is-there-a-vim-command-to-select-pasted-text
+nnoremap p p`[v`]
+nnoremap P P`[v`]
 
 " From https://superuser.com/questions/310417/how-to-keep-in-visual-mode-after-identing-by-shift-in-vim
 vnoremap < <gv
@@ -61,4 +69,14 @@ vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
 
+" Highlighting 
+hi Visual term=reverse cterm=reverse guibg=Blue
+hi Visual cterm=reverse ctermbg=Blue ctermfg=NONE
+
+" Highliting for vimdiff
+" (https://vi.stackexchange.com/questions/10897/how-do-i-customize-vimdiff-colors)
+hi DiffAdd      ctermfg=Yellow          ctermbg=NONE
+hi DiffChange   ctermfg=NONE          ctermbg=NONE
+hi DiffDelete   ctermfg=LightBlue     ctermbg=NONE
+hi DiffText     ctermfg=Yellow        ctermbg=NONE
 
