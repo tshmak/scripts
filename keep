@@ -1,0 +1,8 @@
+mkdir .mv
+shopt -s dotglob 
+mv * .mv
+for i in $@
+do 
+    mv .mv/$i .
+done
+
