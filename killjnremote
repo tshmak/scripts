@@ -1,0 +1,23 @@
+#!/bin/bash 
+
+ps aux | grep localhost | grep $@
+echo 
+pid=$(ps aux | grep localhost | grep $@ | awk '{print $2}') 
+n_results=$(echo $pid | wc | awk '{print $2}')
+if [ $n_results -eq 0 ] 
+then
+    echo "No matches found."
+    exit
+fi
+
+for id in $pid
+do
+    read -p "Kill $id? [y]/n" yn
+    if [[ $yn =~ ^[Nn] ]]
+    then
+        continue
+    fi
+    kill $id
+done
+
+

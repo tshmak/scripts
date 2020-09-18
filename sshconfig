@@ -15,8 +15,15 @@ Host gpu2
   ForwardX11 yes
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
+Host gpu3
+  Hostname 192.168.1.238 
+  User tshmak
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /opt/X11/bin/xauth
 Host gpu4
-  Hostname 192.168.1.242
+  Hostname 192.168.1.243
   User tshmak
   ForwardAgent yes
   ForwardX11 yes
