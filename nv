@@ -1,0 +1,8 @@
+if [[ "$1" == "full" ]]
+then
+    nvidia-smi
+else
+    nvidia-smi | awk -v start=0 \
+        '$0 ~ /^ *$/ {start=1; next} \
+        start==1 {print $0}'
+fi

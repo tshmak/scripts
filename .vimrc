@@ -4,8 +4,8 @@ noremap gc :s/^\(\s*\)/\1#/<CR> " commenting
 noremap cg :s/^\(\s*\)#/\1/<CR> " uncommenting
 
 " Window sizing shortcuts 
-nnoremap <C-Up> <C-w>+
-nnoremap <C-Down> <C-w>-
+nnoremap <C-k> <C-w>+
+nnoremap <C-j> <C-w>-
 
 " From https://vi.stackexchange.com/a/26746/30874
 " vnoremap <C-C> :w !xclip -i -r -sel c<CR><CR>
@@ -21,11 +21,12 @@ vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>`]
 " To prevent paste from yanking text
 vnoremap p "0p
 vnoremap P "0P
-vnoremap y "0y
+" vnoremap y "0y
 vnoremap d "0d
+" vnoremap x "0x
 
 " Inserts quotes (Reference: https://superuser.com/a/986769/1154376)
-vnoremap " c""<ESC>Pgv
+" vnoremap " c""<ESC>Pgv
 vnoremap ' c''<ESC>Pgv
 
 " From https://stackoverflow.com/questions/4312664/is-there-a-vim-command-to-select-pasted-text

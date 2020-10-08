@@ -1,3 +1,18 @@
-line=$(tail -n $1 ~/bgrun.logs/bgrun.log | head -1)
-file=$(echo $line | awk '{print $2}')
-tail $2 $file
+if [[ -z "$1" ]]
+then 
+    tail ~/bgrun.logs/bgrun.log 
+else 
+    line=$(tail -n $1 ~/bgrun.logs/bgrun.log | head -1)
+    file=$(echo $line | awk '{print $2}')
+    echo $line
+    ls -lha "$file" 
+    opts=-5
+    [[ -n "$2" ]] && opts=$2
+    echo 
+    echo ">>>> HEAD >>>>"
+    head $opts $file | cut -c1-80
+    echo
+    echo ">>>> TAIL >>>>"
+    tail $opts $file | cut -c1-80
+fi
+

@@ -30,6 +30,8 @@ if [ "$default_PATH" == "" ]; then
 fi
 export PATH="$default_PATH:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
+export VISUAL=vim
+export EDITOR="$VISUAL"
 
 # echo $PATH 
 
