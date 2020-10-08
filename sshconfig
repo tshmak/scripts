@@ -30,5 +30,5 @@ Host gpu4
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
 Host mymac
-  Hostname 192.168.4.1
+  Hostname 192.168.4.43
   User tshmak

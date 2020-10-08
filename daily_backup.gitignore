@@ -20,3 +20,4 @@ conda_*/
 myRpackages/
 myPythonModules/
 Rpackages2/
+site-packages/
