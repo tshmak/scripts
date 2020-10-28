@@ -44,6 +44,7 @@ set shiftwidth=4
 set expandtab
 set foldmethod=indent
 set nofoldenable
+set nu
 
 
 " From https://github.com/ConradIrwin/vim-bracketed-paste/blob/master/plugin/bracketed-paste.vim

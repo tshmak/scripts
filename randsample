@@ -2,8 +2,8 @@
 # Usage: randsample <file> [n]
 # n (default 100) is the number of samples
 
-file=$1
+file="$1"
 n=$2
 [[ -z "$2" ]] && n=100
-N=$(wc -l $1 | awk '{print $1}')
-awk -v n=$n -v N=$N 'BEGIN{srand()}; rand() < n/N{print $0}' $1 | shuf
+N=$(wc -l "$1" | awk '{print $1}')
+awk -v n=$n -v N=$N 'BEGIN{srand()}; rand() < n/N{print $0}' "$1" | shuf

@@ -9,7 +9,7 @@ ln -s nas2/tshmak storage
 cd - 
 
 cd $HOME
-for i in storage/scripts storage/sandbox storage/WORK storage/Downloads scripts/.gitconfig storage/DATA storage/local scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile scripts/.condarc
+for i in storage/scripts storage/sandbox storage/WORK storage/Downloads scripts/.gitconfig storage/DATA storage/local scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile scripts/.condarc storage/Dropbox
 do 
     b=$(basename $i)
     [ -L $b ] && rm $(basename $i)
