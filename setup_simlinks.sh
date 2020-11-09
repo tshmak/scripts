@@ -1,3 +1,8 @@
+if [ "$HOME" != "/home/tshmak" ] 
+then 
+    echo "\$HOME is not /home/tshmak. Terminating."
+fi
+
 cd $HOME
 [ -L nas2 ] && rm nas2
 ln -s /mnt/nas2

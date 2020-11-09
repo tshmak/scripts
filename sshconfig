@@ -24,10 +24,9 @@ Host gpu4
 Host mymac
   Hostname 192.168.4.43
   User tshmak
-Host szgpu2
+Host szgpu2_root
   Hostname 10.10.18.232
   User root
-  ForwardAgent yes
-  ForwardX11 yes
-  ForwardX11Trusted yes
-  XAuthLocation /opt/X11/bin/xauth
+Host szgpu2
+  Hostname 10.10.18.232
+  User tshmak
