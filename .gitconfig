@@ -10,3 +10,5 @@
 	tool = vimdiff
 [push]
 	default = simple
+[credential]
+	helper = store
