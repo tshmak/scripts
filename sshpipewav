@@ -1,19 +1,19 @@
 waitfile=$1
 if [[ -z $waitfile ]] 
 then
-    echo "No waitfile supplied"
+    echo "No waitfile supplied" >&2
     exit
 fi
 
 if [[ -f $waitfile ]] 
 then
-    echo "waitfile already exists. Please delete or use another one."
+    echo "waitfile already exists. Please delete or use another one." >&2
     exit
 fi
 
 if [[ ! $waitfile =~ \.wav$ ]] 
 then
-    echo "$waitfile does not end with .wav."
+    echo "$waitfile does not end with .wav." >&2
     exit
 fi
 
@@ -22,7 +22,8 @@ do
     if [[ -f $waitfile ]]
     then 
         sox $waitfile -t raw -r 44100 -e signed-integer -L -b 16 -c 2 - 
-        mv $waitfile $waitfile.finished
+        #mv $waitfile $waitfile.finished
+        rm $waitfile
     fi
     sleep 1
 done
