@@ -3,5 +3,5 @@ waitfile=$2
 [ -z $1 ] && server=gpu1
 [ -z $2 ] && waitfile=/home/tshmak/sandbox/sshplay.wav
 
-ssh $server "sshpipewav $waitfile" | sshpipewav.play 
+ssh -t $server "sshpipewav $waitfile" | sshpipewav.play 
 
