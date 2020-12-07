@@ -1,0 +1,12 @@
+server=$1
+waitfile=$2
+[ -z $2 ] && waitfile=/home/tshmak/sshplay.wav
+trap ctrl_c INT
+
+function ctrl_c() {
+    tokill=$(ps uxf | grep uxf | awk '{print $2}')
+    ssh $server "kill $tokill"
+}
+
+ssh $server "sshpipewav $waitfile" | sshpipewav.play 
+
