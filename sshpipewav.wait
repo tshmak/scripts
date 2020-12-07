@@ -5,7 +5,7 @@ waitfile=$2
 trap ctrl_c INT
 
 function ctrl_c() {
-    tokill=$(ps uxf | grep uxf | awk '{print $2}')
+    tokill=$(ps uxf | grep sshplay\.wav | awk '{print $2}')
     ssh $server "kill $tokill"
 }
 
