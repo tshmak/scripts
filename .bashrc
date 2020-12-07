@@ -57,9 +57,12 @@ export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
 export BUP_DIR=/home/tshmak/storage/.bup
 
 
-# Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
-bind '"\e[A":history-search-backward'
-bind '"\e[B":history-search-forward'
+if [[ $- =~ i ]]
+then
+    # Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
+    bind '"\e[A":history-search-backward'
+    bind '"\e[B":history-search-forward'
+fi
 
 
 # # >>> conda initialize >>>
