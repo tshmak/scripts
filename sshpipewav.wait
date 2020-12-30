@@ -3,5 +3,9 @@ waitfile=$2
 [ -z $1 ] && server=gpu1
 [ -z $2 ] && waitfile=/home/tshmak/sandbox/sshplay.wav
 
-ssh -t $server "sshpipewav $waitfile" | sshpipewav.play 
+echo "inferencetest.py --play \"cp @wavfile $waitfile\""
+echo
+
+
+ssh $server "sshpipewav $waitfile" | sshpipewav.play 
 
