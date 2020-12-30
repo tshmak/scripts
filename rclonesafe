@@ -2,10 +2,24 @@
 
 # A safe version of rclone
 
-rclone $@ --dry-run
-echo "" 
+tempfile=/tmp/rclone.dryrun
+rclone $@ --dry-run > $tempfile 2>&1 
+cat $tempfile
+echo
+echo "TO COPY:"
+grep "Skipped copy" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped copy as .*$//'
+echo
 
-read -p "Ok?" yn
+
+echo "TO DELETE:"
+grep "Skipped delete" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped delete as .*$//'
+echo 
+
+echo "TO REMOVE DIRECTORIES:"
+grep "Skipped remove directory" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped remove direcotry as .*$//'
+echo 
+
+read -p "Run for real [yN]?" yn
 case $yn in
 [Yy]* )
     rclone $@  ;;
@@ -14,3 +28,4 @@ case $yn in
   ;;
 esac
 
+rm $tempfile
