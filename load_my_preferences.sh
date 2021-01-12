@@ -38,6 +38,7 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 
+
 scripts=$HOME/Downloads/scripts
 [ $1 ] && scripts=$1
 if [ ! -d $scripts ] 
@@ -47,7 +48,9 @@ then
 fi
 
 export PATH=$PATH:$scripts
+
 source $scripts/git-prompt.sh
+git config -f $scripts/.gitconfig
 
 alias ssh="ssh -F $scripts/sshconfig"
 alias vim="MYVIMRC=$scripts/.vimrc vim"
