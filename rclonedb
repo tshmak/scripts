@@ -11,16 +11,12 @@ subfolder=$(pwd | sed -r 's/^.*FanoTimMak[\/]?//')
 
 if [[ "$1" == "up" ]]; then 
   shift
-  cmd="rclonesafe sync . dropbox:$subfolder --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@" 
-  echo $cmd
-  rclonesafe sync . dropbox:$subfolder --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@ 
+  cmd="rclonesafe sync . dropbox:$subfolder --links --create-empty-src-dirs --exclude-from $dbfolder/.rclone.exclude.txt $@" 
 elif [[ "$1" == "copy" ]]; then
   cmd="rclonesafe copy $2 dropbox:$subfolder" 
-  echo $cmd
-  rclonesafe copy $2 dropbox:$subfolder
 else 
-  cmd="rclonesafe sync dropbox:$subfolder . --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@" 
-  echo $cmd
-  rclonesafe sync dropbox:$subfolder . --create-empty-src-dirs --exclude=*/ --exclude-from $dbfolder/.rclone.exclude.txt $@ 
+  cmd="rclonesafe sync dropbox:$subfolder . --links --create-empty-src-dirs --exclude-from $dbfolder/.rclone.exclude.txt $@" 
 fi
 
+echo $cmd
+$cmd

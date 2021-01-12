@@ -1,0 +1,23 @@
+#!/bin/bash
+# Use rclone to sync googledrive with /home/tshmak/googledrive
+
+ggfolder=$HOME/googledrive
+if [[ ! $(pwd) =~ googledrive ]]; then
+  echo "You must be in a subdirectory within $ggfolder"
+  exit 1
+fi
+subfolder=$(pwd | sed -r 's/^.*googledrive[\/]?//')
+#echo $subfolder
+
+if [[ "$1" == "up" ]]; then 
+  shift
+  cmd="rclonesafe sync $PWD/ googledrive:$subfolder --links --create-empty-src-dirs --exclude-from $ggfolder/.rclone.exclude.txt $@" 
+elif [[ "$1" == "copy" ]]; then
+  cmd="rclonesafe copy $2 googledrive:$subfolder" 
+else 
+  cmd="rclonesafe sync googledrive:$subfolder $PWD/ --links --create-empty-src-dirs --exclude-from $ggfolder/.rclone.exclude.txt $@" 
+fi
+
+echo $cmd
+echo
+$cmd

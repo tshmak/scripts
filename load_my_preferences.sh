@@ -1,13 +1,13 @@
 #!/bin/bash
 
-_conda_exec=$(which conda)
-if [ ! $_conda_exec ] 
+_conda_dir=$(ls -d $HOME/*conda3 2>/dev/null) 
+if [ "$?" != "0" ] 
 then
     echo "conda not found"
     echo "Consider: wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
-    echo "Otherwise: . \$conda_path/etc/profile.d/conda.sh"  
 else
-    echo "conda found: $_conda_exec"
+    echo "conda found: $_conda_dir"
+    source $_conda_dir/etc/profile.d/conda.sh
 fi
 echo
 
@@ -53,5 +53,5 @@ source $scripts/git-prompt.sh
 git config -f $scripts/.gitconfig
 
 alias ssh="ssh -F $scripts/sshconfig"
-alias vim="MYVIMRC=$scripts/.vimrc vim"
+alias vim="MYVIMRC=$scripts/.vimrc vim -u $scripts/.vimrc"
 
