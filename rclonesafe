@@ -10,13 +10,16 @@ echo "TO COPY:"
 grep "Skipped copy" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped copy as .*$//'
 echo
 
+echo "TO MAKE DIRECTORIES:"
+grep "Skipped make directory" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped make directory as .*$//'
+echo 
 
 echo "TO DELETE:"
 grep "Skipped delete" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped delete as .*$//'
 echo 
 
 echo "TO REMOVE DIRECTORIES:"
-grep "Skipped remove directory" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped remove direcotry as .*$//'
+grep "Skipped remove directory" $tempfile | sed 's/^.*NOTICE: //' | sed 's/: Skipped remove directory as .*$//'
 echo 
 
 read -p "Run for real [yN]?" yn
