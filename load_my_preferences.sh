@@ -50,7 +50,7 @@ fi
 export PATH=$PATH:$scripts
 
 source $scripts/git-prompt.sh
-git config -f $scripts/.gitconfig
+#git config -f $scripts/.gitconfig
 
 alias ssh="ssh -F $scripts/sshconfig"
 alias vim="MYVIMRC=$scripts/.vimrc vim -u $scripts/.vimrc"
