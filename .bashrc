@@ -62,6 +62,7 @@ then
     # Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
     bind '"\e[A":history-search-backward'
     bind '"\e[B":history-search-forward'
+    tmux
 fi
 
 
@@ -79,4 +80,3 @@ fi
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
-tmux
