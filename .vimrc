@@ -26,12 +26,29 @@ vnoremap d "0d
 " vnoremap x "0x
 
 " Inserts quotes (Reference: https://superuser.com/a/986769/1154376)
-" vnoremap " c""<ESC>Pgv
-vnoremap ' c''<ESC>Pgv
+vnoremap " c""<ESC>Pgvw
+vnoremap ' c''<ESC>Pgvw
+vnoremap ( c()<ESC>Pgvw
+vnoremap [ c[]<ESC>Pgvw
+vnoremap { c{}<ESC>Pgvw
+
+" Find brackets and quotes
+nnoremap g( /(<CR>N
+nnoremap g[ /[<CR>N
+nnoremap g{ /{<CR>N
+nnoremap g" /"<CR>N
+nnoremap g' /'<CR>N
+vnoremap g" /"<CR>
+vnoremap g' /'<CR>
+
+" Remove quotes/brackets
+vnoremap gr yxgv`><ESC>hxgvhh
 
 " From https://stackoverflow.com/questions/4312664/is-there-a-vim-command-to-select-pasted-text
 nnoremap p p`[v`]
 nnoremap P P`[v`]
+nnoremap gP i <ESC>P`[v`]
+nnoremap gp a <ESC>p`[v`]
 
 " From https://superuser.com/questions/310417/how-to-keep-in-visual-mode-after-identing-by-shift-in-vim
 vnoremap < <gv

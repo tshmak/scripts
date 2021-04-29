@@ -5,5 +5,5 @@ args=$@
 basename=$(basename $wavfile)
 scp gpu1:$wavfile /tmp/$basename
 play $args /tmp/$basename
-rm /tmp/$basename
+[ -z "$KEEP" ] && rm /tmp/$basename
 
