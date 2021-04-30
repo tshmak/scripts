@@ -39,6 +39,7 @@ source $HOME/scripts/git-prompt.sh
 alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias diff=colordiff
+alias xc="xclip -r -sel c"
 
 if [ "$_chdir" != "" ]; then 
   cd $_chdir # This variable is used when calling qsub in interactive mode in my script for switching to current directory 
