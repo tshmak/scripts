@@ -4,6 +4,7 @@ if [[ $(hostname) =~ ^Fano ]]; then
   # Fano server 
   color="--color=auto"
   conda_path=$HOME/miniconda3
+  START_TMUX=1
 
 elif [[ $(hostname) == "timhome" ]]; then 
   # Home Linux
@@ -63,7 +64,7 @@ then
     # Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
     bind '"\e[A":history-search-backward'
     bind '"\e[B":history-search-forward'
-    tmux
+    [ -n "$START_TMUX" ] && tmux
 fi
 
 
