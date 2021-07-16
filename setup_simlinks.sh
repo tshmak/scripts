@@ -23,7 +23,7 @@ done
 cd - 
 
 cd $HOME
-for i in scripts/.gitconfig scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile scripts/.condarc scripts/.tmux.conf
+for i in scripts/.gitconfig scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile scripts/.condarc scripts/.tmux.conf scripts/.ducrc
 do 
     b=$(basename $i)
     [ -L $b ] && rm $(basename $i)

@@ -25,6 +25,9 @@ vnoremap P "0P
 vnoremap d "0d
 " vnoremap x "0x
 
+" https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode (Seems necessary after version 8)
+set backspace=indent,eol,start
+
 " Inserts quotes (Reference: https://superuser.com/a/986769/1154376)
 vnoremap " c""<ESC>Pgvw
 vnoremap ' c''<ESC>Pgvw
@@ -45,10 +48,15 @@ vnoremap g' /'<CR>
 vnoremap gr yxgv`><ESC>hxgvhh
 
 " From https://stackoverflow.com/questions/4312664/is-there-a-vim-command-to-select-pasted-text
-nnoremap p p`[v`]
-nnoremap P P`[v`]
-nnoremap gP i <ESC>P`[v`]
-nnoremap gp a <ESC>p`[v`]
+nnoremap gp p`[v`]
+nnoremap gP P`[v`]
+nnoremap <Space>P i <ESC>Pll
+nnoremap <Space>p a <ESC>p
+" nnoremap <Space>P O<ESC>P0
+" nnoremap <Space>P o<ESC>p0
+
+" From https://vim.fandom.com/wiki/Search_for_visually_selected_text
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " From https://superuser.com/questions/310417/how-to-keep-in-visual-mode-after-identing-by-shift-in-vim
 vnoremap < <gv
@@ -98,4 +106,16 @@ hi DiffAdd      ctermfg=Yellow          ctermbg=NONE
 hi DiffChange   ctermfg=NONE          ctermbg=NONE
 hi DiffDelete   ctermfg=LightBlue     ctermbg=NONE
 hi DiffText     ctermfg=Yellow        ctermbg=NONE
+
+" Ignore whitespace in vimdiff https://vim.fandom.com/wiki/Ignore_white_space_in_vimdiff
+if &diff
+    map gs :call IwhiteToggle()<CR>
+    function! IwhiteToggle()
+      if &diffopt =~ 'iwhite'
+        set diffopt-=iwhite
+      else
+        set diffopt+=iwhite
+      endif
+    endfunction
+endif
 

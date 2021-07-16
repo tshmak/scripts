@@ -19,15 +19,9 @@ elif [[ $(hostname) == "Timothy-Mak.local" ]]; then
 else 
   echo "I don't know what home is for this machine" 
 fi
-#### Activate conda ####
-. $conda_path/etc/profile.d/conda.sh  
-CONDA_CHANGEPS1=false conda activate base
-
-# echo $default_PATH
 
 if [ "$default_PATH" == "" ]; then
 	export default_PATH=$PATH
-#	echo $default_PATH
 fi
 export PATH="$default_PATH:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
@@ -41,6 +35,8 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias diff=colordiff
 alias xc="xclip -r -sel c"
+alias vim=/home/tshmak/local/gpu1/bin/vim
+alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
 
 if [ "$_chdir" != "" ]; then 
   cd $_chdir # This variable is used when calling qsub in interactive mode in my script for switching to current directory 
@@ -66,6 +62,10 @@ then
     bind '"\e[B":history-search-forward'
     [ -n "$START_TMUX" ] && tmux
 fi
+
+#### Activate conda ####
+. $conda_path/etc/profile.d/conda.sh  
+CONDA_CHANGEPS1=false conda activate base
 
 
 # # >>> conda initialize >>>
