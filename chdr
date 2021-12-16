@@ -1,0 +1,6 @@
+#!/bin/bash
+
+[ -z "$1" ] && echo 'Please specify either ssd or nas2 or something else' && exit
+
+pwd=$(realpath $PWD)/
+echo $pwd | sed -r "s,/mnt/[^/]+?/,/mnt/$1/,"

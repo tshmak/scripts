@@ -48,11 +48,12 @@ export LC_ALL=en_US.UTF-8
 
 # echo "Hello!"
 
-export ted=$HOME/WORK/Projects/WFST/kaldi/egs/tedlium/s5_r3
-export kaldi=$HOME/WORK/Projects/WFST/kaldi
-export WFST=$HOME/WORK/Projects/WFST
-export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
+#export ted=$HOME/WORK/Projects/WFST/kaldi/egs/tedlium/s5_r3
+#export kaldi=$HOME/WORK/Projects/WFST/kaldi
+#export WFST=$HOME/WORK/Projects/WFST
+#export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
 export BUP_DIR=/home/tshmak/storage/.bup
+export CUDA_VISIBLE_DEVICES=1
 
 
 if [[ $- =~ i ]]
