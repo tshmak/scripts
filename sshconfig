@@ -34,3 +34,6 @@ Host szgpu2_root
 Host szgpu2
   Hostname 10.10.18.232
   User tshmak
+Host szgpu5
+  Hostname 10.10.18.235
+  User tshmak
