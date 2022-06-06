@@ -23,7 +23,7 @@ fi
 if [ "$default_PATH" == "" ]; then
 	export default_PATH=$PATH
 fi
-export PATH="$default_PATH:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
+export PATH="$default_PATH:$HOME/miniconda3/bin:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -33,6 +33,7 @@ export EDITOR="$VISUAL"
 source $HOME/scripts/git-prompt.sh
 alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
+alias lsU='ls -U'
 alias diff=colordiff
 alias xc="xclip -r -sel c"
 alias vim=/home/tshmak/local/gpu1/bin/vim
@@ -53,8 +54,9 @@ export LC_ALL=en_US.UTF-8
 #export WFST=$HOME/WORK/Projects/WFST
 #export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
 export BUP_DIR=/home/tshmak/storage/.bup
-export CUDA_VISIBLE_DEVICES=1
-
+if [[ ! $(hostname) =~ server2 ]]; then 
+    export CUDA_VISIBLE_DEVICES=1
+fi
 
 if [[ $- =~ i ]]
 then

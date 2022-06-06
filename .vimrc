@@ -119,3 +119,4 @@ if &diff
     endfunction
 endif
 
+colorscheme evening
