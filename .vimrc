@@ -120,3 +120,4 @@ if &diff
 endif
 
 colorscheme evening
+highlight Normal ctermbg=NONE
