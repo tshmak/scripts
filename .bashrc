@@ -27,6 +27,7 @@ export PATH="$default_PATH:$HOME/miniconda3/bin:$HOME/scripts/:$HOME/local/gpu2/
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # echo $PATH 
 
@@ -36,8 +37,11 @@ alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
 alias xc="xclip -r -sel c"
-alias vim=/home/tshmak/local/gpu1/bin/vim
-alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
+if [[ $(hostname) =~ ^Fano ]]; then 
+  # Fano server 
+  alias vim=/home/tshmak/local/gpu1/bin/vim
+  alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
+fi
 
 if [ "$_chdir" != "" ]; then 
   cd $_chdir # This variable is used when calling qsub in interactive mode in my script for switching to current directory 

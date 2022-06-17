@@ -120,3 +120,5 @@ if &diff
 endif
 
 colorscheme evening
+hi Normal ctermbg=NONE
+hi Visual term=reverse cterm=reverse guibg=Grey
