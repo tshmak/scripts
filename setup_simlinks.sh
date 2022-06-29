@@ -1,11 +1,13 @@
-if [ "$HOME" != "/home/tshmak" ] 
-then 
-    echo "\$HOME is not /home/tshmak. Terminating."
-fi
-
 cd $HOME
 [ -L nas2 ] && rm nas2
 ln -s /mnt/nas2
+cd - 
+
+cd $HOME
+if [[ $(hostname) =~ ^Fano-SZ ]]; then # Fano ShenZhen server 
+    [ -L SZRESnas ] && rm SZRESnas
+    ln -s /mnt/Research SZRESnas
+fi
 cd - 
 
 cd $HOME

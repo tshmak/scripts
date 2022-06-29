@@ -37,8 +37,8 @@ alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
 alias xc="xclip -r -sel c"
-if [[ $(hostname) =~ ^Fano ]]; then 
-  # Fano server 
+if [[ $(hostname) =~ ^Fano-HK ]]; then 
+  # Fano HK server 
   alias vim=/home/tshmak/local/gpu1/bin/vim
   alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
 fi
@@ -72,7 +72,8 @@ fi
 
 #### Activate conda ####
 . $conda_path/etc/profile.d/conda.sh  
-CONDA_CHANGEPS1=false conda activate base
+conda deactivate
+#CONDA_CHANGEPS1=false conda activate base
 
 
 # # >>> conda initialize >>>
