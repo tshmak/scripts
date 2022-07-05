@@ -26,7 +26,7 @@ Host gpu4
   Hostname 192.168.1.243
   User tshmak
 Host mymac
-  Hostname 192.168.4.42
+  Hostname 192.168.4.43
   User tshmak
 Host szgpu2_root
   Hostname 10.10.18.232

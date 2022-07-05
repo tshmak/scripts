@@ -5,18 +5,29 @@ cd -
 
 cd $HOME
 if [[ $(hostname) =~ ^Fano-SZ ]]; then # Fano ShenZhen server 
-    [ -L SZRESnas ] && rm SZRESnas
-    ln -s /mnt/Research SZRESnas
+    # /home/tshmak is already on ssd
+    [ -L localnas ] && rm localnas
+    ln -s /mnt/Research localnas
+elif [[ $(hostname) =~ ^Fano-HK ]]; then # Fano HK server 
+    [ -L ssd ] && rm ssd
+    ln -s /mnt/ssd/tshmak ssd
+    [ -L localnas ] && rm localnas
+    ln -s /mnt/nas2 localnas
 fi
 cd - 
 
 cd $HOME
 [ -L storage ] && rm storage
-ln -s nas2/tshmak storage
+ln -s localnas/tshmak storage
 cd - 
 
 cd $HOME
-for i in storage/scripts storage/sandbox storage/WORK storage/Downloads storage/DATA storage/local storage/Dropbox
+[ -L scripts ] && rm scripts
+ln -s /mnt/nas2/tshmak/scripts # Script will point to HK nas2 even in SZ, because SZ have no access to github
+cd - 
+
+cd $HOME
+for i in storage/WORK storage/DATA storage/sandbox storage/Downloads storage/local storage/Dropbox
 do 
     b=$(basename $i)
     [ -L $b ] && rm $(basename $i)
