@@ -10,6 +10,7 @@ elif [[ $(hostname) =~ ^Fano-SZ ]]; then
   # Fano SZ server 
   color="--color=auto"
   conda_path=$HOME/storage/miniconda3
+  START_TMUX=1
 
 elif [[ $(hostname) == "timhome" ]]; then 
   # Home Linux
