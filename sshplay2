@@ -1,10 +1,13 @@
 #!/bin/bash
 wavfile=$1
-server=${server:-gpu2}
+server=${server:-gpu3}
 shift
-args=$@
 basename=$(basename $wavfile)
-scp $server:$wavfile /tmp/$basename
-play $args /tmp/$basename
+target=${KEEP:-/tmp/$basename}
+[ "$KEEP" == "1" ] && target=/tmp/$basename
+cmd="scp $server:$wavfile $target"
+echo $cmd
+$cmd
+play "$@" $target
 [ -z "$KEEP" ] && rm /tmp/$basename
 
