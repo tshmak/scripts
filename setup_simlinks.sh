@@ -1,20 +1,33 @@
-if [ "$HOME" != "/home/tshmak" ] 
-then 
-    echo "\$HOME is not /home/tshmak. Terminating."
-fi
-
 cd $HOME
 [ -L nas2 ] && rm nas2
 ln -s /mnt/nas2
 cd - 
 
 cd $HOME
-[ -L storage ] && rm storage
-ln -s nas2/tshmak storage
+if [[ $(hostname) =~ ^Fano-SZ ]]; then # Fano ShenZhen server 
+    # /home/tshmak is already on ssd
+    [ -L localnas ] && rm localnas
+    ln -s /mnt/Research localnas
+elif [[ $(hostname) =~ ^Fano-HK ]]; then # Fano HK server 
+    [ -L ssd ] && rm ssd
+    ln -s /mnt/ssd/tshmak ssd
+    [ -L localnas ] && rm localnas
+    ln -s /mnt/nas2 localnas
+fi
 cd - 
 
 cd $HOME
-for i in storage/scripts storage/sandbox storage/WORK storage/Downloads storage/DATA storage/local storage/Dropbox
+[ -L storage ] && rm storage
+ln -s localnas/tshmak storage
+cd - 
+
+cd $HOME
+[ -L scripts ] && rm scripts
+ln -s /mnt/nas2/tshmak/scripts # Script will point to HK nas2 even in SZ, because SZ have no access to github
+cd - 
+
+cd $HOME
+for i in storage/WORK storage/DATA storage/sandbox storage/Downloads storage/local storage/Dropbox
 do 
     b=$(basename $i)
     [ -L $b ] && rm $(basename $i)
@@ -36,7 +49,7 @@ cd $HOME/.ssh
 [ -L config ] && rm config
 ln -s $HOME/scripts/sshconfig config
 [ -L authorized_keys ] && rm authorized_keys
-ln -s $HOME/scripts/authorized_keys
+cp $HOME/scripts/authorized_keys .
 cd - 
 
 mkdir -p $HOME/.config
