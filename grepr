@@ -1,1 +1,1 @@
-grep -r --include=*.$1 --exclude-dir=.git --exclude-dir=conda_* "$2" . 
+grep -r --include=*.$1 --exclude-dir=.git --exclude-dir=conda_* $3 "$2" . 

@@ -1,7 +1,7 @@
 filetype plugin indent on
 syntax on
 noremap gc :s/^\(\s*\)/\1#/<CR> " commenting 
-noremap cg :s/^\(\s*\)#/\1/<CR> " uncommenting
+noremap gv :s/^\(\s*\)#/\1/<CR> " uncommenting
 
 " Window sizing shortcuts 
 nnoremap <C-k> <C-w>+
