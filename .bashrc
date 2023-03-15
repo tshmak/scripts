@@ -29,7 +29,7 @@ fi
 if [ "$default_PATH" == "" ]; then
 	export default_PATH=$PATH
 fi
-export PATH="$default_PATH:$HOME/miniconda3/bin:$HOME/scripts/:$HOME/local/gpu2/bin:$HOME/local/gpu1/bin"
+export PATH="$default_PATH:$HOME/miniconda3/bin:$HOME/scripts/"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -42,9 +42,9 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
-alias xc="xclip -r -sel c"
 if [[ $(hostname) =~ ^Fano-HK ]]; then 
   # Fano HK server 
+  alias xc="/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c"
   alias vim=/home/tshmak/local/gpu1/bin/vim
   alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
 fi

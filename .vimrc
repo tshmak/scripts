@@ -13,7 +13,7 @@ nnoremap <C-j> <C-w>-
 func! Myfunc(lofs)
     let l:clipboard = eval("$HOME") . "/.vim_clipboard"
     call writefile(a:lofs, l:clipboard)
-    call system("xclip -r -sel c " . l:clipboard)
+    call system("/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c " . l:clipboard)
 endfunc
 vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>`]
 
