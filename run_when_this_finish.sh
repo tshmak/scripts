@@ -2,7 +2,6 @@
 
 pid=$1
 shift
-cmd=$
 
 process=$(ps $pid | grep $pid | tr -s ' ' | cut -d' ' -f5-)
 echo $process
