@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pwd=$(realpath $1)
+echo $pwd | sed -r "s,tshmak,tshmak/ssd,"

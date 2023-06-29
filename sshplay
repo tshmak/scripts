@@ -6,5 +6,5 @@ basename=$(basename $wavfile)
 play=/usr/local/bin/play
 
 scp $wavfile mymac:/tmp/$basename
-ssh mymac "$play $args /tmp/$basename; rm /tmp/$basename"
+ssh -n mymac "$play $args /tmp/$basename; rm /tmp/$basename"
 
