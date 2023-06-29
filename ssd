@@ -1,4 +1,4 @@
 #!/bin/bash
 
 pwd=$(realpath $1)
-echo $pwd | sed -r "s,tshmak,tshmak/ssd,"
+echo $pwd | sed -r "s,/mnt/nas2/tshmak,/home/tshmak/ssd,"
