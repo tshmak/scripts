@@ -1,0 +1,3 @@
+[submodule "MyPythonPackageTemplate"]
+	path = MyPythonPackageTemplate
+	url = git@github.com:tshmak/MyPythonPackageTemplate.git

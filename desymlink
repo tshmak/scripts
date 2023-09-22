@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+target="$1"
+[ ! -L "$target" ] && echo "Target is not a symbolic link" && exit
+source="$(realpath $target)"
+rm "$target"
+cp -r "$source" "$target"

@@ -45,8 +45,8 @@ alias diff=colordiff
 if [[ $(hostname) =~ ^Fano-HK ]]; then 
   # Fano HK server 
   alias xc="/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c"
-  alias vim=/home/tshmak/local/gpu1/bin/vim
-  alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
+  #alias vim=/home/tshmak/local/gpu1/bin/vim
+  #alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
 fi
 
 if [ "$_chdir" != "" ]; then 

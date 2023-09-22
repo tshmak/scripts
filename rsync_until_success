@@ -1,0 +1,13 @@
+# Copied from https://www.meziantou.net/retry-a-bash-command.htm
+options="$@" 
+
+rsync $options
+exit_code=$?
+
+while [ $exit_code -ne 0 ]
+do
+    rsync $options
+    exit_code=$?
+    sleep 5
+done
+
