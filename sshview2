@@ -1,13 +1,13 @@
 #!/bin/bash
-wavfile=$1
+pdffile=$1
 server=${server:-gpu2}
 shift
-basename=$(basename $wavfile)
+basename=$(basename $pdffile)
 target=${KEEP:-/tmp/$basename}
 [ "$KEEP" == "1" ] && target=/tmp/$basename
-cmd="scp $server:$wavfile $target"
+cmd="scp $server:$pdffile $target"
 echo $cmd
 $cmd
-play "$@" $target
+evince "$@" $target
 [ -z "$KEEP" ] && rm /tmp/$basename
 
