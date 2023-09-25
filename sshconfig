@@ -2,6 +2,7 @@ Host *
   IdentityFile ~/.ssh/id_rsa
   ServerAliveInterval 15
 Host gpu1
+  RemoteForward 2222 localhost:22
   Hostname 192.168.1.236 
   User tshmak
   ForwardAgent yes
@@ -9,6 +10,7 @@ Host gpu1
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
 Host gpu2
+  RemoteForward 2222 localhost:22
   Hostname 192.168.1.237 
   User tshmak
   ForwardAgent yes
@@ -16,6 +18,7 @@ Host gpu2
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
 Host gpu3
+  RemoteForward 2222 localhost:22
   Hostname 192.168.1.238 
   User tshmak
   ForwardAgent yes
@@ -37,20 +40,4 @@ Host szgpu2
 Host szgpu5
   Hostname 10.10.18.235
   User tshmak
-Host gpu3R
-  RemoteForward 2222 localhost:22
-  HostName 192.168.1.238
-  User tshmak
-  ForwardAgent yes
-  ForwardX11 yes
-  ForwardX11Trusted yes
-  XAuthLocation /opt/X11/bin/xauth
-Host gpu2R
-  RemoteForward 2222 localhost:22
-  Hostname 192.168.1.237 
-  User tshmak
-  ForwardAgent yes
-  ForwardX11 yes
-  ForwardX11Trusted yes
-  XAuthLocation /opt/X11/bin/xauth
 
