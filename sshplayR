@@ -1,0 +1,10 @@
+#!/bin/bash
+wavfile=$1
+shift
+args=$@
+basename=$(basename $wavfile)
+play=/usr/local/bin/play
+rp=$(realpath $wavfile)
+
+ssh localhost -p 2222 "scp gpu3:$rp /tmp/$basename && /usr/local/bin/play /tmp/$basename && rm /tmp/$basename"
+
