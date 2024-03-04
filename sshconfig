@@ -1,6 +1,14 @@
 Host *
   IdentityFile ~/.ssh/id_rsa
   ServerAliveInterval 15
+Host kcgpu1
+  RemoteForward 2222 localhost:22
+  Hostname 192.168.190.111 
+  User tshmak
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /opt/X11/bin/xauth
 Host gpu1
   RemoteForward 2222 localhost:22
   Hostname 192.168.1.236 
@@ -29,7 +37,7 @@ Host gpu4
   Hostname 192.168.1.243
   User tshmak
 Host mymac
-  Hostname 192.168.4.79
+  Hostname 192.168.4.70
   User tshmak
 Host szgpu2_root
   Hostname 10.10.18.232

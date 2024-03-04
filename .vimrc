@@ -6,6 +6,8 @@ noremap gv :s/^\(\s*\)#/\1/<CR> " uncommenting
 " Window sizing shortcuts 
 nnoremap <C-k> <C-w>+
 nnoremap <C-j> <C-w>-
+nnoremap <C-h> <C-w><
+nnoremap <C-l> <C-w>>
 
 " From https://vi.stackexchange.com/a/26746/30874
 " vnoremap <C-C> :w !xclip -i -r -sel c<CR><CR>

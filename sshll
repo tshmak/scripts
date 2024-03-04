@@ -2,7 +2,7 @@
 
 if [ "$HOSTNAME" == "Timothy-Mak.local" ]; then 
     currentdir=$(echo $(pwd) | sed "s/^\/Users/\/home/") 
-  remote=gpu1
+  remote=kcgpu1
   color="--color=auto"
 else 
     currentdir=$(echo $(pwd) | sed "s/^\/home/\/Users/") 

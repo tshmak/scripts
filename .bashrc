@@ -3,7 +3,13 @@ machine=$(uname -s)
 if [[ $(hostname) =~ ^Fano-HK ]]; then 
   # Fano server 
   color="--color=auto"
-  conda_path=$HOME/miniconda3
+  conda_path=$HOME/miniforge3
+  START_TMUX=1
+
+elif [[ $(hostname) =~ ^HKKCDC ]]; then 
+  # Fano SZ server 
+  color="--color=auto"
+  conda_path=$HOME/miniforge3
   START_TMUX=1
 
 elif [[ $(hostname) =~ ^Fano-SZ ]]; then 
@@ -29,7 +35,8 @@ fi
 if [ "$default_PATH" == "" ]; then
 	export default_PATH=$PATH
 fi
-export PATH="$default_PATH:$HOME/miniconda3/bin:$HOME/scripts/"
+
+export PATH="$default_PATH:$HOME/miniforge3/bin:$HOME/scripts/"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -47,6 +54,11 @@ if [[ $(hostname) =~ ^Fano-HK ]]; then
   alias xc="/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c"
   #alias vim=/home/tshmak/local/gpu1/bin/vim
   #alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
+elif [[ $(hostname) =~ ^HKKCDC ]]; then 
+  # Fano HKKCDC server 
+  alias xc="/usr/bin/xclip -r -sel c"
+  #alias vim=/home/tshmak/local/gpu1/bin/vim
+  #alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
 fi
 
 if [ "$_chdir" != "" ]; then 
@@ -56,6 +68,7 @@ fi
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export DOTNET_CLI_TELEMETRY_OPTOUT=1 # https://learn.microsoft.com/en-us/dotnet/core/tools/telemetry
 
 # echo "Hello!"
 
@@ -77,7 +90,8 @@ then
 fi
 
 #### Activate conda ####
-. $conda_path/etc/profile.d/conda.sh  
+. $conda_path/etc/profile.d/conda.sh    
+[[ $(hostname) =~ ^Fano-HK ]] && . $conda_path/etc/profile.d/mamba.sh    
 conda deactivate
 #CONDA_CHANGEPS1=false conda activate base
 

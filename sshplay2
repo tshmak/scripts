@@ -1,6 +1,6 @@
 #!/bin/bash
 wavfile=$1
-server=${server:-gpu2}
+server=${server:-kcgpu1}
 shift
 basename=$(basename $wavfile)
 target=${KEEP:-/tmp/$basename}
