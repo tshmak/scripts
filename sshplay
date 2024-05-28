@@ -7,5 +7,5 @@ play=/usr/local/bin/play
 rp=$(realpath $wavfile)
 ext=${basename##*.}
 
-ssh -n localhost -p 2222 "scp kcgpu1:$rp /tmp/sshplay.$ext && /usr/local/bin/play $args /tmp/sshplay.$ext && rm /tmp/sshplay.$ext"
+ssh -n localhost -p 2222 "scp gpu1:$rp /tmp/sshplay.$ext && /usr/local/bin/play $args /tmp/sshplay.$ext && rm /tmp/sshplay.$ext"
 

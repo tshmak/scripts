@@ -1,6 +1,6 @@
 #!/bin/bash
 machine=$(uname -s)
-if [[ $(hostname) =~ ^Fano-HK ]]; then 
+if [[ $(hostname) =~ ^HKSTP ]]; then 
   # Fano server 
   color="--color=auto"
   conda_path=$HOME/miniforge3
@@ -49,7 +49,7 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
-if [[ $(hostname) =~ ^Fano-HK ]]; then 
+if [[ $(hostname) =~ ^HKSTP ]]; then 
   # Fano HK server 
   alias xc="/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c"
   #alias vim=/home/tshmak/local/gpu1/bin/vim
@@ -91,7 +91,7 @@ fi
 
 #### Activate conda ####
 . $conda_path/etc/profile.d/conda.sh    
-[[ $(hostname) =~ ^Fano-HK ]] && . $conda_path/etc/profile.d/mamba.sh    
+[[ $(hostname) =~ ^HKSTP ]] && . $conda_path/etc/profile.d/mamba.sh    
 conda deactivate
 #CONDA_CHANGEPS1=false conda activate base
 
