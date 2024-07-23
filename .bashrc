@@ -4,19 +4,19 @@ if [[ $(hostname) =~ ^HKSTP ]]; then
   # Fano server 
   color="--color=auto"
   conda_path=$HOME/miniforge3
-  START_TMUX=1
+  START_TMUX=0
 
 elif [[ $(hostname) =~ ^HKKCDC ]]; then 
   # Fano SZ server 
   color="--color=auto"
   conda_path=$HOME/miniforge3
-  START_TMUX=1
+  START_TMUX=0
 
 elif [[ $(hostname) =~ ^Fano-SZ ]]; then 
   # Fano SZ server 
   color="--color=auto"
   conda_path=$HOME/storage/miniconda3
-  START_TMUX=1
+  START_TMUX=0
 
 elif [[ $(hostname) == "timhome" ]]; then 
   # Home Linux
@@ -86,7 +86,7 @@ then
     # Better autocomplete: https://mhoffman.github.io/2015/05/21/how-to-navigate-directories-with-the-shell.html
     bind '"\e[A":history-search-backward'
     bind '"\e[B":history-search-forward'
-    [ -n "$START_TMUX" ] && tmux
+    [ "$START_TMUX" = "1" ] && tmux
 fi
 
 #### Activate conda ####
