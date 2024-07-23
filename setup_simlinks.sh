@@ -1,6 +1,6 @@
 cd $HOME
-[ -L nas2 ] && rm nas2
-ln -s /mnt/nas2
+[ -L ttsnas ] && rm ttsnas
+ln -s /mnt/ttsnas
 cd - 
 
 cd $HOME
@@ -12,7 +12,7 @@ elif [[ $(hostname) =~ ^Fano-HK ]]; then # Fano HK server
     [ -L ssd ] && rm ssd
     ln -s /mnt/ssd/tshmak ssd
     [ -L localnas ] && rm localnas
-    ln -s /mnt/nas2 localnas
+    ln -s /mnt/ttsnas localnas
 fi
 cd - 
 
@@ -23,7 +23,7 @@ cd -
 
 cd $HOME
 [ -L scripts ] && rm scripts
-ln -s /mnt/nas2/tshmak/scripts # Script will point to HK nas2 even in SZ, because SZ have no access to github
+ln -s /mnt/ttsnas/tshmak/scripts # Script will point to HK ttsnas even in SZ, because SZ have no access to github
 cd - 
 
 cd $HOME
