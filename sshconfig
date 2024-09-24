@@ -9,6 +9,14 @@ Host kcgpu1
   ForwardX11 yes
   ForwardX11Trusted yes
   XAuthLocation /opt/X11/bin/xauth
+Host kcgpu3
+  RemoteForward 2222 localhost:22
+  Hostname 192.168.190.110 
+  User tshmak
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes
+  XAuthLocation /opt/X11/bin/xauth
 Host gpu1
   RemoteForward 2222 localhost:22
   Hostname 192.168.1.236 
