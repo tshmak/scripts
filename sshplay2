@@ -8,6 +8,6 @@ target=${KEEP:-/tmp/$basename}
 cmd="scp $server:$wavfile $target"
 echo $cmd
 $cmd
-play "$@" $target
+afplay "$@" $target
 [ -z "$KEEP" ] && rm /tmp/$basename
 

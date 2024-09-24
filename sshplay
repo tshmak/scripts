@@ -3,10 +3,10 @@ wavfile=$1
 shift
 args=$@
 basename=$(basename $wavfile)
-play=/usr/local/bin/play
-#play=/usr/bin/afplay
+#play=/usr/local/bin/play
+play=/usr/bin/afplay
 rp=$(realpath $wavfile)
 ext=${basename##*.}
 
-ssh -n localhost -p 2222 "scp kcgpu1:$rp /tmp/sshplay.$ext && $play $args /tmp/sshplay.$ext && rm /tmp/sshplay.$ext"
+ssh -t localhost -p 2222 "scp kcgpu1:$rp /tmp/sshplay.$ext && $play $args /tmp/sshplay.$ext && rm /tmp/sshplay.$ext"
 

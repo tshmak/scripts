@@ -8,7 +8,7 @@ if [[ $(hostname) =~ ^Fano-SZ ]]; then # Fano ShenZhen server
     # /home/tshmak is already on ssd
     [ -L localnas ] && rm localnas
     ln -s /mnt/Research localnas
-elif [[ $(hostname) =~ ^Fano-HK ]]; then # Fano HK server 
+elif [[ $(hostname) =~ ^HK ]]; then # Fano HK server 
     [ -L ssd ] && rm ssd
     ln -s /mnt/ssd/tshmak ssd
     [ -L localnas ] && rm localnas
