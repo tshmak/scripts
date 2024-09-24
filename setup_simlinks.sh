@@ -35,6 +35,10 @@ do
 done
 cd - 
 
+cd $HOME/local
+ln -s /usr/bin
+cd - 
+
 cd $HOME
 for i in scripts/.gitconfig scripts/.vimrc scripts/.bashrc scripts/.bash_profile scripts/.Rprofile scripts/.condarc scripts/.tmux.conf scripts/.ducrc
 do 

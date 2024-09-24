@@ -49,17 +49,7 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
-if [[ $(hostname) =~ ^HKSTP ]]; then 
-  # Fano HK server 
-  alias xc="/mnt/nas2/tshmak/local/gpu2/bin/xclip -r -sel c"
-  #alias vim=/home/tshmak/local/gpu1/bin/vim
-  #alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
-elif [[ $(hostname) =~ ^HKKCDC ]]; then 
-  # Fano HKKCDC server 
-  alias xc="/usr/bin/xclip -r -sel c"
-  #alias vim=/home/tshmak/local/gpu1/bin/vim
-  #alias vimdiff=/home/tshmak/local/gpu1/bin/vimdiff
-fi
+alias xc="$HOME/local/bin/xclip -r -sel c"
 
 if [ "$_chdir" != "" ]; then 
   cd $_chdir # This variable is used when calling qsub in interactive mode in my script for switching to current directory 
