@@ -124,3 +124,12 @@ endif
 colorscheme evening
 hi Normal ctermbg=NONE
 hi Visual term=reverse cterm=reverse guibg=Grey
+
+" vim-plug (https://github.com/junegunn/vim-plug) --- a plugin manager
+call plug#begin()
+
+" List your plugins here (relative to .vim/)
+Plug 'plugged/linediff.vim'
+
+call plug#end()
+

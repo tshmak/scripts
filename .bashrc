@@ -67,9 +67,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1 # https://learn.microsoft.com/en-us/dotnet/
 #export WFST=$HOME/WORK/Projects/WFST
 #export tommyted=/home/tommy/kaldi/egs/tedlium/s5_r3
 export BUP_DIR=/home/tshmak/storage/.bup
-if [[ ! $(hostname) =~ server2 ]]; then 
-    export CUDA_VISIBLE_DEVICES=1
-fi
+export CUDA_VISIBLE_DEVICES=8
 
 if [[ $- =~ i ]]
 then

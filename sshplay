@@ -6,7 +6,12 @@ args=$@
 basename=$(basename $wavfile)
 #play=/usr/local/bin/play
 play=/usr/bin/afplay
-ap=$PWD/$wavfile
+if [ "${wavfile:0:1}" = "/" ]
+then
+    ap=$wavfile
+else
+    ap=$PWD/$wavfile
+fi
 #rp=$(realpath $wavfile)
 ext=${basename##*.}
 
