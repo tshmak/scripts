@@ -52,8 +52,6 @@ mkdir -p $HOME/.ssh
 cd $HOME/.ssh
 [ -L config ] && rm config
 ln -s $HOME/scripts/sshconfig config
-[ -L authorized_keys ] && rm authorized_keys
-cp $HOME/scripts/authorized_keys .
 cd - 
 
 mkdir -p $HOME/.config
