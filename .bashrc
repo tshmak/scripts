@@ -27,7 +27,7 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
-alias xc="$HOME/local/bin/xclip -r -sel c"
+alias xc="/usr/bin/xclip -r -sel c"
 
 if [ "$_chdir" != "" ]; then 
   cd $_chdir # This variable is used when calling qsub in interactive mode in my script for switching to current directory 

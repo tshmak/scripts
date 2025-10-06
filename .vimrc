@@ -15,7 +15,7 @@ nnoremap <C-l> <C-w>>
 func! Myfunc(lofs)
     let l:clipboard = eval("$HOME") . "/.vim_clipboard"
     call writefile(a:lofs, l:clipboard)
-    call system("$HOME/local/bin/xclip -r -sel c " . l:clipboard)
+    call system("/usr/bin/xclip -r -sel c " . l:clipboard)
 endfunc
 vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>`]
 
@@ -129,7 +129,8 @@ hi Visual term=reverse cterm=reverse guibg=Grey
 call plug#begin()
 
 " List your plugins here (relative to .vim/)
-Plug 'plugged/linediff.vim'
+" Plug 'plugged/linediff.vim'
+Plug 'AndrewRadev/linediff.vim'
 
 call plug#end()
 
