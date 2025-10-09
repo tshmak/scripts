@@ -2,10 +2,14 @@
 machine=$(uname -s)
 
 if [[ $(hostname) == "Timothys-MacBook-Air" ]]; then 
-  # My Macbookpro
-  conda_path=$HOME/miniconda3
-  export CLICOLOR=1
-
+    # My Macbookpro
+    conda_path=$HOME/miniconda3
+    export CLICOLOR=1
+elif [[ $(hostname) == "sake" ]]; then 
+    # Pantheon sake
+    conda_path=$HOME/miniforge3
+    color="--color=auto"
+    export CLICOLOR=1
 else 
   echo "I don't know what home is for this machine" 
 fi
@@ -47,6 +51,11 @@ then
     bind '"\e[B":history-search-forward'
     [ "$START_TMUX" = "1" ] && tmux
 fi
+
+#### Setting below to mute warnings at Pantheon because I don't have sudo privileges
+command_not_found_handle() {
+    echo "$1: command not found"
+}
 
 #### Activate conda ####
 . $conda_path/etc/profile.d/conda.sh    

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# OSC 52 clipboard setter -- to copy text to clipboard over TTY -- courtesy of copilot
+# Usage: echo text | osc52 
+# or: osc52 text
+# or: osc52
+#     then enter text and Ctrl-D
+if [ -n "$*" ]; then
+  input="$*"
+else
+  input=$(cat)
+fi
+
+data=$(printf "%s" "$input" | openssl base64 | tr -d '\n')
+printf "\e]52;c;%s\a" "$data" > /dev/tty
