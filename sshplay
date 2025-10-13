@@ -1,11 +1,11 @@
 #!/bin/bash
 wavfile=$1
-server=${server:-kcgpu1}
+server=${server:-sake}
 shift
 args=$@
 basename=$(basename $wavfile)
 #play=/usr/local/bin/play
-play=/usr/bin/afplay
+play=/usr/bin/play
 if [ "${wavfile:0:1}" = "/" ]
 then
     ap=$wavfile
