@@ -1,6 +1,6 @@
 #!/bin/bash
 wavfile=$1
-server=${server:-kcgpu1}
+server=${server:-sake}
 shift
 basename=$(basename $wavfile)
 target=${KEEP:-/tmp/$basename}
@@ -8,6 +8,6 @@ target=${KEEP:-/tmp/$basename}
 cmd="scp $server:$wavfile $target"
 echo $cmd
 $cmd
-afplay "$@" $target
+play "$@" $target
 [ -z "$KEEP" ] && rm /tmp/$basename
 

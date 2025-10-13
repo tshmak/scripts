@@ -3,7 +3,7 @@ machine=$(uname -s)
 
 if [[ $(hostname) == "Timothys-MacBook-Air" ]]; then 
     # My Macbookpro
-    conda_path=$HOME/miniconda3
+    conda_path=$HOME/miniforge3
     export CLICOLOR=1
 elif [[ $(hostname) == "sake" ]]; then 
     # Pantheon sake
@@ -58,8 +58,23 @@ command_not_found_handle() {
 }
 
 #### Activate conda ####
-. $conda_path/etc/profile.d/conda.sh    
-[[ $(hostname) =~ ^HKSTP ]] && . $conda_path/etc/profile.d/mamba.sh    
+. $conda_path/etc/profile.d/conda.sh      # commented out by conda initialize
+#[[ $(hostname) =~ ^HKSTP ]] && . $conda_path/etc/profile.d/mamba.sh    
 conda deactivate
 
 
+## >>> conda initialize >>>
+## !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/timothy/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+    #eval "$__conda_setup"
+#else
+    #if [ -f "/home/timothy/miniforge3/etc/profile.d/conda.sh" ]; then
+        #. "/home/timothy/miniforge3/etc/profile.d/conda.sh"
+    #else
+        #export PATH="/home/timothy/miniforge3/bin:$PATH"
+    #fi
+#fi
+#unset __conda_setup
+## <<< conda initialize <<<
+#
