@@ -1,7 +1,12 @@
 #!/bin/bash
 machine=$(uname -s)
 
-if [[ $(hostname) == "Timothys-MacBook-Air" ]]; then 
+if [[ $(hostname) == "LAPTOP-3M6CFHF7" ]]; then 
+    # Pantheon Windows WSL 
+    conda_path=$HOME/miniforge3
+    color="--color=auto"
+    export CLICOLOR=1
+elif [[ $(hostname) == "Timothys-MacBook-Air" ]]; then 
     # My Macbookpro
     conda_path=$HOME/miniforge3
     export CLICOLOR=1
