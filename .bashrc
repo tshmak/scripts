@@ -6,7 +6,7 @@ if [[ $(hostname) == "LAPTOP-3M6CFHF7" ]]; then
     conda_path=$HOME/miniforge3
     color="--color=auto"
     export CLICOLOR=1
-elif [[ $(hostname) == "Timothys-MacBook-Air" ]]; then 
+elif [[ $(hostname) =~ "Timothy" ]]; then 
     # My Macbookpro
     conda_path=$HOME/miniforge3
     export CLICOLOR=1
@@ -19,11 +19,11 @@ else
   echo "I don't know what home is for this machine" 
 fi
 
-if [ "$default_PATH" == "" ]; then
+if [ "$default_PATH" = "" ]; then
 	export default_PATH=$PATH
 fi
 
-export PATH="$default_PATH:$HOME/miniforge3/bin:$HOME/scripts/"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$default_PATH:$HOME/miniforge3/bin:$HOME/scripts/:/opt/homebrew/bin"
 export PS1='\[\e[1;32m\][$(__git_ps1)\h \w]\n\$ \[\e[0m\]'
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -36,7 +36,7 @@ alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
 alias diff=colordiff
-alias xc="/usr/bin/xclip -r -sel c"
+alias xc="xclip -r -sel c"
 alias copy=osc52
 
 if [ "$_chdir" != "" ]; then 
