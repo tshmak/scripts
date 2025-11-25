@@ -15,6 +15,7 @@ elif [[ $(hostname) == "sake" ]]; then
     conda_path=$HOME/miniforge3
     color="--color=auto"
     export CLICOLOR=1
+    export TMOUT=
 else 
   echo "I don't know what home is for this machine" 
 fi
@@ -35,8 +36,8 @@ source $HOME/scripts/git-prompt.sh
 alias ll='ls $color -Flha'
 alias ll0='ls $color -Flh'
 alias lsU='ls -U'
-alias diff=colordiff
 alias xc="xclip -r -sel c"
+#alias diff=colordiff
 alias copy=osc52
 
 if [ "$_chdir" != "" ]; then 
