@@ -10,6 +10,14 @@ import tempfile
 import subprocess
 from typing import List
 
+def remainder_to_relpaths(remainder, root):
+    res = []
+    if remainder:
+        res = [os.path.relpath(os.path.realpath(x), root) 
+               for x in remainder]
+        assert not any(x.startswith('..') for x in res) # path must be a subdirectory of root
+    return res
+
 def run_cmd(cmd, error_message=None, capture_output=False): 
     if isinstance(cmd, List): 
         cmd = ' '.join(cmd)
@@ -99,12 +107,9 @@ def lctl_status(args, remainder):
     
     # Restrict to subdirectories
     if remainder:
-        breakpoint() # Check the following ok
-        assert len(remainder) == 1
-        path = remainder[0]
-        relpath = os.path.relpath(path, root)
-        assert not relpath.startswith('..') # path must be a subdirectory of root
-        cmd = cmd + f' | grep {relpath}'
+        relpaths = remainder_to_relpaths(remainder, root)
+        assert len(relpaths) == 1
+        cmd = cmd + f' | grep {relpaths[0]}'
 
     run_cmd(cmd)
     return
@@ -135,7 +140,8 @@ def lctl_log(args, remainder):
 
     # Restrict to paths
     if remainder: 
-        prefixes = ','.join(remainder)
+        relpaths = remainder_to_relpaths(remainder)
+        prefixes = ','.join(relpaths)
         prefixes = f'--prefixes {prefixes}'
     else:
         prefixes = ''
