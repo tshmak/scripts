@@ -99,9 +99,9 @@ def lctl_status(args, remainder):
     if args.depth == 0: 
         cmd = 'lakectl local status'
     elif args.depth == 1: 
-        cmd = f"lakectl local status | grep local | cut -d'/' -f1 | uniq"
+        cmd = f"lakectl local status | grep local | cut -d'/' -f1 | sort | uniq"
     elif args.depth > 1: 
-        cmd = f"lakectl local status | grep local | cut -d'/' -f1-{args.depth} | uniq"
+        cmd = f"lakectl local status | grep local | cut -d'/' -f1-{args.depth} | sort | uniq"
     else:
         raise Exception
     
@@ -118,7 +118,7 @@ def lctl_commit(args, remainder):
     # Find URI
     uri, head, root = read_lakefs_ref_yaml(args.lakefs_ref_yaml)
     assert len(args.commits) == 0
-    cmd = f'lakectl local commit -m {args.message}'
+    cmd = f'lakectl local commit -m "{args.message}"'
     run_cmd(cmd)
     return
 
@@ -140,7 +140,7 @@ def lctl_log(args, remainder):
 
     # Restrict to paths
     if remainder: 
-        relpaths = remainder_to_relpaths(remainder)
+        relpaths = remainder_to_relpaths(remainder, root)
         prefixes = ','.join(relpaths)
         prefixes = f'--prefixes {prefixes}'
     else:
@@ -152,7 +152,7 @@ def lctl_log(args, remainder):
         uri = f'{uri0}/{args.branch}'
 
     # run_cmd
-    cmd = f'lakectl log {dot} {n} {prefixes} {uri} | less'
+    cmd = f'lakectl log {dot} {n} {prefixes} {uri} | less -X'
     run_cmd(cmd)
     return
 
