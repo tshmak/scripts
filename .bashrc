@@ -1,21 +1,16 @@
 #!/bin/bash
 machine=$(uname -s)
 
-if [[ $(hostname) == "LAPTOP-3M6CFHF7" ]]; then 
-    # Pantheon Windows WSL 
+if [[ $(hostname) == "MAKTI-W11" ]]; then 
+    # OOCL My Desktop
     conda_path=$HOME/miniforge3
     color="--color=auto"
     export CLICOLOR=1
+    alias view='powershell.exe Start-Process'
 elif [[ $(hostname) =~ "Timothy" ]]; then 
     # My Macbookpro
     conda_path=$HOME/miniforge3
     export CLICOLOR=1
-elif [[ $(hostname) == "sake" ]]; then 
-    # Pantheon sake
-    conda_path=$HOME/miniforge3
-    color="--color=auto"
-    export CLICOLOR=1
-    export TMOUT=
 else 
   echo "I don't know what home is for this machine" 
 fi

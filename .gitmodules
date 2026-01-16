@@ -1,6 +1,6 @@
 [submodule "MyPythonPackageTemplate"]
 	path = MyPythonPackageTemplate
-	url = git@github.com:tshmak/MyPythonPackageTemplate.git
+	url = https://github.com/tshmak/MyPythonPackageTemplate.git
 [submodule "tmiscpy"]
 	path = tmiscpy
-	url = git@github.com:tshmak/tmiscpy.git
+	url = https://github.com/tshmak/tmiscpy.git

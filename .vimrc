@@ -1,7 +1,5 @@
 filetype plugin indent on
 syntax on
-noremap gc :s/^\(\s*\)/\1#/<CR> " commenting 
-noremap gv :s/^\(\s*\)#/\1/<CR> " uncommenting
 
 " Window sizing shortcuts 
 nnoremap <C-k> <C-w>+
@@ -16,7 +14,7 @@ func! Myfunc(lofs)
     let l:clipboard = eval("$HOME") . "/.vim_clipboard"
     call writefile(a:lofs, l:clipboard)
     " call system("/usr/bin/xclip -r -sel c " . l:clipboard)
-    call system("cat " . l:clipboard . " | /home/timothy/scripts/osc52")
+    call system("cat " . l:clipboard . " | /home/" . eval("$USER") . "/scripts/osc52")
 endfunc
 vnoremap <C-C> "0y:call Myfunc(getreg('0', 1, 1))<CR>`]
 
@@ -105,10 +103,10 @@ hi Visual cterm=reverse ctermbg=Blue ctermfg=NONE
 
 " Highliting for vimdiff
 " (https://vi.stackexchange.com/questions/10897/how-do-i-customize-vimdiff-colors)
-hi DiffAdd      ctermfg=Yellow          ctermbg=NONE
-hi DiffChange   ctermfg=NONE          ctermbg=NONE
-hi DiffDelete   ctermfg=LightBlue     ctermbg=NONE
-hi DiffText     ctermfg=Yellow        ctermbg=NONE
+" hi DiffAdd      ctermfg=Yellow          ctermbg=NONE
+" hi DiffChange   ctermfg=NONE          ctermbg=NONE
+" hi DiffDelete   ctermfg=LightBlue     ctermbg=NONE
+" hi DiffText     ctermfg=Yellow        ctermbg=NONE
 
 " Ignore whitespace in vimdiff https://vim.fandom.com/wiki/Ignore_white_space_in_vimdiff
 if &diff
@@ -127,15 +125,38 @@ hi Normal ctermbg=NONE
 hi Visual term=reverse cterm=reverse guibg=Grey
 
 " vim-plug (https://github.com/junegunn/vim-plug) --- a plugin manager
+let g:plug_url_format = 'https://github.com/%s.git' " Force use https instead of ssh
 call plug#begin()
 
-" List your plugins here (relative to .vim/)
-Plug 'plugged/linediff.vim'
-" Plug 'AndrewRadev/linediff.vim'
-Plug 'preservim/vim-markdown'
+" List your plugins here 
+Plug 'AndrewRadev/linediff.vim' " vimdiff for line blocks
+Plug 'preservim/vim-markdown' " syntax highlighting for markdown
+Plug 'morhetz/gruvbox' " colorscheme
+Plug 'mechatroner/rainbow_csv' " Pretty CSV display
+Plug 'Vimjas/vim-python-pep8-indent' " Applies correct Python indent as you type
+Plug 'dense-analysis/ale'  " linting
+Plug 'FooSoft/vim-argwrap' " For wrapping/unwrapping long lists of arguments
+Plug 'tomtom/tcomment_vim' " For comment toggle with gc
 
 call plug#end()
 
 " Set quarto files *.qmd as markdown files
 au BufRead,BufNewFile *.qmd set filetype=markdown
 
+" Set color scheme
+colorscheme desert
+
+" for dense-analysis/ale plugin (Requires pip install black pycodestyle)
+let g:ale_fixers = {
+\   'python': ['black'],
+\}
+let g:ale_linters = {
+\   'python': ['pycodestyle'],
+\}
+" Default ALE to on/off (1/0)
+let g:ale_enabled = 1
+" Add to this list if you want
+let g:ale_python_pycodestyle_options = '--ignore=E501,W291,E226,E402,W503,W504'
+
+" vim-argwrap
+nnoremap <silent> <leader>a :ArgWrap<CR>
